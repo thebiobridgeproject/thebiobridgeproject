@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects – The BioBridge Project</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #f8fafc; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+        header { background: linear-gradient(135deg, #7dd3fc, #a7f3d0); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        nav { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: #0891b2; font-weight: 600; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links .active { color: #0f766e; border-bottom: 2px solid #0f766e; }
+        .login-btn { background: #0891b2; color: #fff; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: bold; margin-left: 2rem; transition: background 0.2s; }
+        .login-btn:hover { background: #0f766e; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        .page-hero { padding: 110px 0 50px; text-align: center; }
+        .page-hero h1 { font-size: 2.5rem; color: #0891b2; }
+        .page-hero p { color: #0f766e; font-size: 1.2rem; margin-top: 0.5rem; }
+        .projects-list .container.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; }
+        .project-card { background: #fff; border-radius: 15px; box-shadow: 0 5px 20px rgba(125,211,252,0.13); padding: 2rem; border: 2px solid #7dd3fc; text-align: left; }
+        .project-card h3 { color: #0891b2; margin-bottom: 0.6rem; }
+        .project-card p { color: #0f766e; margin-bottom: 1.2rem; }
+        .project-link { color: #0891b2; border: 2px solid #0891b2; padding: 0.5rem 1rem; border-radius: 25px; font-weight: bold; transition: all 0.2s; display: inline-block; }
+        .project-link:hover { background: #0891b2; color: #fff; }
+        footer { background: linear-gradient(135deg, #0891b2, #0f766e); color: #fff; padding: 2.5rem 0; margin-top: 4rem; }
+        .footer-links { display: flex; justify-content: center; gap: 2.2rem; margin-bottom: 1rem; }
+        .footer-links a { color: #fff; font-weight: 500; }
+        .footer-links a:hover { color: #7dd3fc; }
+        footer p { text-align: center; font-size: 1rem; }
+        @media (max-width: 900px) {
+            .container { padding: 0 1rem; }
+            .nav-links { gap: 1.2rem; }
+        }
+        @media (max-width: 700px) {
+            .projects-list .container.grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; gap: 0.7rem; }
+            header nav { flex-direction: column; gap: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="resource-hub.html">Resource Hub</a></li>
+                <li><a href="essay-analyzer.html">Essay Analyzer</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+            <a href="#" class="login-btn">Log In</a>
+        </nav>
+    </header>
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our STEM Projects</h1>
+            <p>Explore our hands-on kits and activities for all grade levels.</p>
+        </div>
+    </section>
+    <section class="projects-list">
+        <div class="container grid">
+            <div class="project-card">
+                <h3>🧪 Mini Explorers Kit (Grades 1–2)</h3>
+                <p>Design a solar oven, build irrigation systems, and explore soil filtration!</p>
+                <a href="https://docs.google.com/document/d/1cYAeYVT2U-2W0l2hwJgTjOoQ-RP0PIBzRN1nuRXqksM/edit?usp=sharing" target="_blank" class="project-link">Access Kit</a>
+            </div>
+            <div class="project-card">
+                <h3>🔧 Junior Crisis Solvers (Grades 3–5)</h3>
+                <p>Build a desalination unit, simulate oil spill cleanups, and more.</p>
+                <a href="https://docs.google.com/document/d/1rVODnnuhEV2QXkUIRBKoanchKHlC9EpglLF0PrrigQk/edit?usp=sharing" target="_blank" class="project-link">Access Kit</a>
+            </div>
+            <div class="project-card">
+                <h3>🧬 Applied Science & Innovation (Grades 6–8)</h3>
+                <p>Extract DNA, simulate gene editing, and build environmental sensors.</p>
+                <a href="https://docs.google.com/document/d/1ls8S_-MJ9RZUbsNNmZkKOSRb74bhb2gTkkPvlnmKTlo/edit?usp=sharing" target="_blank" class="project-link">Access Kit</a>
+            </div>
+            <div class="project-card">
+                <h3>🚀 The Frontier Kit (Advanced Learners)</h3>
+                <p>Engineer water filtration towers, design mobile games, and more!</p>
+                <a href="https://docs.google.com/document/d/154roVUv5W5r5a0f1m_Hk9RzmPqzH3_kteHEfmmKvkZY/edit?usp=sharing" target="_blank" class="project-link">Access Kit</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="resource-hub.html">Resource Hub</a>
+                <a href="essay-analyzer.html">Essay Analyzer</a>
+                <a href="volunteer.html">Volunteer</a>
+                <a href="events.html">Events</a>
+            </div>
+            <p>© 2024 The BioBridge Project</p>
+        </div>
+    </footer>
+</body>
+</html>
