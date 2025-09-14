@@ -112,16 +112,27 @@
         </div>
     </footer>
     <script>
-        // Basic client-side resource storage (session only)
+        // Use localStorage for resource persistence (per user/device)
         const resourceForm = document.getElementById('resourceForm');
         const resourcesList = document.getElementById('resourcesList');
         const emptyNote = document.getElementById('emptyNote');
 
-        // Store resources in-memory for now
+        // Load resources from localStorage or initialize
         let resources = [];
+        function loadResources() {
+            try {
+                const data = localStorage.getItem('biobridge_resources');
+                resources = data ? JSON.parse(data) : [];
+            } catch (e) {
+                resources = [];
+            }
+        }
+
+        function saveResources() {
+            localStorage.setItem('biobridge_resources', JSON.stringify(resources));
+        }
 
         function renderResources() {
-            // Clear list
             resourcesList.innerHTML = '';
             if (resources.length === 0) {
                 resourcesList.appendChild(emptyNote);
@@ -143,7 +154,7 @@
 
         // Basic XSS protection
         function escapeHTML(str) {
-            return str.replace(/[&<>"']/g, function(m) {
+            return str.replace(/[&<>"]'/g, function(m) {
                 return ({
                     '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
                 })[m];
@@ -162,11 +173,13 @@
                 return;
             }
             resources.push({ name, link, desc });
+            saveResources();
             renderResources();
             resourceForm.reset();
         });
 
-        // Initial render
+        // Initial load and render
+        loadResources();
         renderResources();
     </script>
 </body>
