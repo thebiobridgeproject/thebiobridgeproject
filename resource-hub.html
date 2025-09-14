@@ -5,8 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resource Hub – The BioBridge Project</title>
   <style>
-    /* [Styling omitted for brevity — same as your original styles] */
-    /* You can keep your full CSS here as-is */
+    /* Your original styles preserved */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #f8fafc; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    header { background: linear-gradient(135deg, #7dd3fc, #a7f3d0); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    nav { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: #0891b2; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links .active { color: #0f766e; border-bottom: 2px solid #0f766e; }
+    .login-btn { background: #0891b2; color: #fff; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: bold; margin-left: 2rem; transition: background 0.2s; }
+    .login-btn:hover { background: #0f766e; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .page-hero { padding: 110px 0 50px; text-align: center; }
+    .page-hero h1 { font-size: 2.5rem; color: #0891b2; }
+    .page-hero p { color: #0f766e; font-size: 1.2rem; margin-top: 0.5rem; }
+    .resource-form-section { background: #fff; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(125,211,252,0.06); max-width: 600px; margin: 2rem auto 0; border: 2px solid #7dd3fc; }
+    .resource-form-section h3 { color: #0891b2; margin-bottom: 1.5rem; text-align: center; }
+    .resource-form label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: #0f766e; }
+    .resource-form input, .resource-form textarea { width: 100%; padding: 0.7rem; border-radius: 8px; border: 1.5px solid #7dd3fc; margin-bottom: 1rem; font-size: 1rem; }
+    .resource-form textarea { min-height: 65px; }
+    .resource-form button {
+      background: #0891b2; color: #fff; border: none; border-radius: 25px;
+      padding: 0.8rem 2rem; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .resource-form button:hover { background: #0f766e; }
+    .resources-list { display: grid; gap: 1.2rem; margin-top: 2.5rem; }
+    .resource-item { background: #fff; padding: 1.2rem 1.7rem; border-radius: 12px; border-left: 4px solid #7dd3fc; box-shadow: 0 3px 15px rgba(125,211,252,0.09); }
+    .resource-item h4 { color: #0891b2; margin-bottom: 0.4rem; }
+    .resource-item p { color: #0f766e; margin-bottom: 0.5rem; }
+    .resource-item a { color: #0891b2; font-weight: bold; word-break: break-word; }
+    .resource-item a:hover { text-decoration: underline; }
+    .empty-note { color: #bbbbbb; text-align: center; margin: 2.5rem 0 0 0; font-size: 1.1rem; }
+    footer { background: linear-gradient(135deg, #0891b2, #0f766e); color: #fff; padding: 2.5rem 0; margin-top: 4rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2.2rem; margin-bottom: 1rem; }
+    .footer-links a { color: #fff; font-weight: 500; }
+    .footer-links a:hover { color: #7dd3fc; }
+    footer p { text-align: center; font-size: 1rem; }
+    @media (max-width: 900px) {
+      .container { padding: 0 1rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+    @media (max-width: 700px) {
+      .resources-list { grid-template-columns: 1fr; }
+      .footer-links { flex-direction: column; gap: 0.7rem; }
+      header nav { flex-direction: column; gap: 0.7rem; }
+      .resource-form-section { padding: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -76,76 +123,4 @@
 
     const API_URL = 'https://script.google.com/macros/s/AKfycbzxmfEHqpeyeMHXiYt7PE-UqUZnKS8vwOOgYXbNaKlN1M0tTbKLncz3GLUXREPJoeGr/exec';
 
-    let resources = [];
-
-    function renderResources() {
-      resourcesList.innerHTML = '';
-      if (resources.length === 0) {
-        resourcesList.appendChild(emptyNote);
-        emptyNote.style.display = 'block';
-      } else {
-        emptyNote.style.display = 'none';
-        resources.forEach(res => {
-          const div = document.createElement('div');
-          div.className = 'resource-item';
-          div.innerHTML = `
-            <h4>${escapeHTML(res.name)}</h4>
-            <p>${escapeHTML(res.desc)}</p>
-            <a href="${escapeHTML(res.link)}" target="_blank">${escapeHTML(res.link)}</a>
-          `;
-          resourcesList.appendChild(div);
-        });
-      }
-    }
-
-    function escapeHTML(str) {
-      return str.replace(/[&<>\"']/g, function(m) {
-        return {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;'
-        }[m];
-      });
-    }
-
-    async function fetchResources() {
-      try {
-        const res = await fetch(API_URL);
-        if (!res.ok) throw new Error('Failed to fetch resources');
-        resources = await res.json();
-      } catch (e) {
-        resources = [];
-      }
-      renderResources();
-    }
-
-    resourceForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const name = document.getElementById('resourceName').value.trim();
-      const link = document.getElementById('resourceLink').value.trim();
-      const desc = document.getElementById('resourceDesc').value.trim();
-
-      if (!/^https?:\/\//i.test(link)) {
-        alert('Please enter a valid URL starting with http:// or https://');
-        return;
-      }
-
-      try {
-        await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, link, desc })
-        });
-        resourceForm.reset();
-        await fetchResources();
-      } catch (err) {
-        alert('Failed to submit resource. Please try again.');
-      }
-    });
-
-    fetchResources();
-  </script>
-</body>
-</html>
+    let resources =
