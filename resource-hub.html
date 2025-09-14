@@ -123,4 +123,8 @@
 
     const API_URL = 'https://script.google.com/macros/s/AKfycbzxmfEHqpeyeMHXiYt7PE-UqUZnKS8vwOOgYXbNaKlN1M0tTbKLncz3GLUXREPJoeGr/exec';
 
-    let resources =
+    let resources = [];
+
+    function renderResources() {
+      resourcesList.innerHTML = '';
+      if (resources.length === 0) {
