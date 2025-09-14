@@ -112,25 +112,13 @@
         </div>
     </footer>
     <script>
-        // Use localStorage for resource persistence (per user/device)
+        // Use Google Apps Script API for shared resource storage
         const resourceForm = document.getElementById('resourceForm');
         const resourcesList = document.getElementById('resourcesList');
         const emptyNote = document.getElementById('emptyNote');
+        const API_URL = 'https://script.google.com/macros/s/AKfycbw0MWcZLEVRs5Fw8Uc9YZIMtxd1ToYYEpJ6KJxekMPl-yoIR5PQlCOlu6Xzf0meUpblHA/exec';
 
-        // Load resources from localStorage or initialize
         let resources = [];
-        function loadResources() {
-            try {
-                const data = localStorage.getItem('biobridge_resources');
-                resources = data ? JSON.parse(data) : [];
-            } catch (e) {
-                resources = [];
-            }
-        }
-
-        function saveResources() {
-            localStorage.setItem('biobridge_resources', JSON.stringify(resources));
-        }
 
         function renderResources() {
             resourcesList.innerHTML = '';
@@ -161,7 +149,18 @@
             });
         }
 
-        resourceForm.addEventListener('submit', function(e) {
+        async function fetchResources() {
+            try {
+                const res = await fetch(API_URL);
+                if (!res.ok) throw new Error('Failed to fetch resources');
+                resources = await res.json();
+            } catch (e) {
+                resources = [];
+            }
+            renderResources();
+        }
+
+        resourceForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('resourceName').value.trim();
             const link = document.getElementById('resourceLink').value.trim();
@@ -172,15 +171,21 @@
                 alert('Please enter a valid URL starting with http:// or https://');
                 return;
             }
-            resources.push({ name, link, desc });
-            saveResources();
-            renderResources();
-            resourceForm.reset();
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, link, desc })
+                });
+                resourceForm.reset();
+                await fetchResources();
+            } catch (err) {
+                alert('Failed to submit resource. Please try again.');
+            }
         });
 
-        // Initial load and render
-        loadResources();
-        renderResources();
+        // Initial load
+        fetchResources();
     </script>
 </body>
 </html>
