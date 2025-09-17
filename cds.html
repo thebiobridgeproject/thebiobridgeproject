@@ -1,81 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>T20 Schools CDS Hub</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #f8fafc; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-    header { background: linear-gradient(135deg, #7dd3fc, #a7f3d0); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-    nav { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { color: #0891b2; font-weight: 600; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links .active { color: #0f766e; border-bottom: 2px solid #0f766e; }
-    .login-btn { background: #0891b2; color: #fff; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: bold; margin-left: 2rem; transition: background 0.2s; }
-    .login-btn:hover { background: #0f766e; }
-    .hero { background: linear-gradient(120deg, #7dd3fc 60%, #fff 100%); padding: 100px 0 60px; text-align: center; }
-    .hero h1 { font-size: 2.8rem; color: #0891b2; margin-bottom: 1rem; }
-    .hero p { font-size: 1.4rem; color: #0f766e; margin-bottom: 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    .section { padding: 60px 0; }
-    .section h2 { font-size: 2rem; color: #0891b2; margin-bottom: 1rem; text-align: center; }
-    .section p { font-size: 1.1rem; color: #0f766e; text-align: center; margin-bottom: 2rem; }
-    table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
-    th, td { padding: 1rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
-    th { background: #e0f7fa; color: #0891b2; font-weight: 600; }
-    td a { color: #0891b2; font-weight: 600; }
-    td a:hover { color: #0f766e; }
-    footer { background: linear-gradient(135deg, #0891b2, #0f766e); color: #fff; padding: 2.5rem 0; margin-top: 4rem; }
-    .footer-links { display: flex; justify-content: center; gap: 2.2rem; margin-bottom: 1rem; }
-    .footer-links a { color: #fff; font-weight: 500; }
-    .footer-links a:hover { color: #7dd3fc; }
-    footer p { text-align: center; font-size: 1rem; }
-    @media (max-width: 900px) {
-      .container { padding: 0 1rem; }
-      .nav-links { gap: 1.2rem; }
-    }
-    @media (max-width: 700px) {
-      .footer-links { flex-direction: column; gap: 0.7rem; }
-      header nav { flex-direction: column; gap: 0.7rem; }
-      table, thead, tbody, th, td, tr { display: block; }
-      th { background: none; font-weight: bold; }
-      td { padding: 0.5rem 0; border: none; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="resource-hub.html">Resource Hub</a></li>
-        <li><a href="cds.html" class="active">T20 Schools Common Data Sets Hub</a></li>
-        <li><a href="essay-analyzer.html">Essay Analyzer</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="events.html">Events</a></li>
-      </ul>
-      <a href="#" class="login-btn">Log In</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h1>T20 Schools Common Data Set Hub</h1>
-      <p>Quick Access to Key College Stats for Informed Decisions</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>🧭 Guided Navigation</h2>
-      <p>The Common Data Set (CDS) includes admission rates, test scores, financial aid, and more. Perfect for first-gen students and data-driven explorers.</p>
-      <h2>🛠️ Comparison Tool</h2>
-      <p>Coming soon: Compare schools side-by-side to find your best fit.</p>
-
       <table>
         <thead>
           <tr>
@@ -86,20 +8,31 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Each row below is a school entry -->
           <tr><td><a href="https://oira.harvard.edu/common-data-set/">Harvard University</a></td><td>2024–2025</td><td>Admit Rate: ~3.4%<br>SAT: 1480–1580<br>Top Majors: Econ, CS<br>Financial Aid: ~55%</td><td><a href="https://oira.harvard.edu/common-data-set/">View CDS</a></td></tr>
           <tr><td><a href="https://irds.stanford.edu/data-findings/cds">Stanford University</a></td><td>2024–2025</td><td>Admit Rate: ~3.7%<br>SAT: 1470–1570<br>Top Majors: Eng, CS<br>Financial Aid: ~50%</td><td><a href="https://irds.stanford.edu/data-findings/cds">View CDS</a></td></tr>
           <tr><td><a href="https://ir.princeton.edu/sites/g/files/toruqf2041/files/documents/cds_2425_princeton.pdf">Princeton University</a></td><td>2024–2025</td><td>Admit Rate: ~5.8%<br>SAT: 1460–1570<br>Top Majors: Public Policy, CS<br>Financial Aid: ~60%</td><td><a href="https://ir.princeton.edu/sites/g/files/toruqf2041/files/documents/cds_2425_princeton.pdf">View CDS</a></td></tr>
           <tr><td><a href="https://oir.yale.edu/sites/default/files/yale_cds_2024-25_rmd_20250612.pdf">Yale University</a></td><td>2024–2025</td><td>Admit Rate: ~4.4%<br>SAT: 1480–1560<br>Top Majors: PoliSci, Econ<br>Financial Aid: ~52%</td><td><a href="https://oir.yale.edu/sites/default/files/yale_cds_2024-25_rmd_20250612.pdf">View CDS</a></td></tr>
           <tr><td><a href="https://ir.mit.edu/project-topic/common-data-set/">MIT</a></td><td>2024–2025</td><td>Admit Rate: ~4.8%<br>SAT: 1510–1580<br>Top Majors: CS, Engineering<br>Financial Aid: ~60%</td><td><a href="https://ir.mit.edu/project-topic/common-data-set/">View CDS</a></td></tr>
-          <tr><td><a href="https://data.uchicago.edu/common-data-set/">University of Chicago</a></td><td>2024–2025</td><td>Admit Rate: ~6.5%<br>SAT: 1500–1570<br>Top Majors
- <footer>
+          <tr><td><a href="https://data.uchicago.edu/common-data-set/">University of Chicago</a></td><td>2024–2025</td><td>Admit Rate: ~6.5%<br>SAT: 1500–1570<br>Top Majors: Econ, Bio<br>Financial Aid: ~55%</td><td><a href="https://data.uchicago.edu/common-data-set/">View CDS</a></td></tr>
+          <tr><td><a href="https://opir.duke.edu/common-data-set">Duke University</a></td><td>2024–2025</td><td>Admit Rate: ~6.2%<br>SAT: 1480–1570<br>Top Majors: Bio, Public Policy<br>Financial Aid: ~50%</td><td><a href="https://opir.duke.edu/common-data-set">View CDS</a></td></tr>
+          <tr><td><a href="https://www.columbia.edu/content/common-data-set">Columbia University</a></td><td>2024–2025</td><td>Admit Rate: ~3.9%<br>SAT: 1490–1570<br>Top Majors: Econ, English<br>Financial Aid: ~48%</td><td><a href="https://www.columbia.edu/content/common-data-set">View CDS</a></td></tr>
+          <tr><td><a href="https://www.brown.edu/about/administration/institutional-research/common-data-set">Brown University</a></td><td>2024–2025</td><td>Admit Rate: ~5.1%<br>SAT: 1460–1550<br>Top Majors: Bio, CS<br>Financial Aid: ~47%</td><td><a href="https://www.brown.edu/about/administration/institutional-research/common-data-set">View CDS</a></td></tr>
+          <tr><td><a href="https://www.northwestern.edu/provost/faculty-resources/data/common-data-set.html">Northwestern University</a></td><td>2024–2025</td><td>Admit Rate: ~7.2%<br>SAT: 1450–1550<br>Top Majors: Journalism, Econ<br>Financial Aid: ~52%</td><td><a href="https://www.northwestern.edu/provost/faculty-resources/data/common-data-set.html">View CDS</a></td></tr>
+          <tr><td><a href="https://www.rice.edu/common-data-set">Rice University</a></td><td>2024–2025</td><td>Admit Rate: ~8.7%<br>SAT: 1470–1560<br>Top Majors: Engineering, Bio<br>Financial Aid: ~60%</td><td><a href="https://www.rice.edu/common-data-set">View CDS</a></td></tr>
+          <tr><td><a href="https://provost.nd.edu/institutional-research/common-data-set/">University of Notre Dame</a></td><td>2024–2025</td><td>Admit Rate: ~13.0%<br>SAT: 1420–1530<br>Top Majors: Business, Engineering<br>Financial Aid: ~55%</td><td><a href="https://provost.nd.edu/institutional-research/common-data-set/">View CDS</a></td></tr>
+          <tr><td><a href="https://www.vanderbilt.edu/ir/common-data-set/">Vanderbilt University</a></td><td>2024–2025</td><td>Admit Rate: ~7.1%<br>SAT: 1480–1570<br>Top Majors: Bio, Econ<br>Financial Aid: ~65%</td><td><a href="https://www.vanderbilt.edu/ir/common-data-set/">View CDS</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
     <div class="container">
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
-        <a href="resource-hub.html" class="active">Resource Hub</a>
-        <a href="cds.html">T20 Schools Common Data Set Hub</a>
+        <a href="resource-hub.html">Resource Hub</a>
+        <a href="cds.html" class="active">T20 Schools Common Data Set Hub</a>
         <a href="essay-analyzer.html">Essay Analyzer</a>
         <a href="volunteer.html">Volunteer</a>
         <a href="events.html">Events</a>
