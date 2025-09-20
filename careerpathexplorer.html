@@ -43,8 +43,10 @@
       background: linear-gradient(135deg, #0891b2, #0f766e); color: #fff;
       text-align: center; padding: 2rem 1rem; margin-top: 4rem;
     }
-    footer a { color: #fff; margin: 0 1rem; font-weight: 500; text-decoration: none; }
-    footer a:hover { color: #7dd3fc; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { color: #fff; font-weight: 500; text-decoration: none; }
+    .footer-links a:hover { color: #7dd3fc; }
+    footer p { font-size: 1rem; margin-top: 1rem; }
   </style>
 </head>
 <body>
@@ -52,8 +54,9 @@
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="resource-hub.html">Resource Hub</a></li>
+        <li><a href="careerexplorer.html" class="active">Aptitude Test & Career Path Explorer</a></li>
         <li><a href="cds.html">T20 Schools Common Data Set Hub</a></li>
         <li><a href="essay-analyzer.html">Essay Analyzer</a></li>
         <li><a href="volunteer.html">Volunteer</a></li>
@@ -71,72 +74,144 @@
     </div>
   </section>
 
-  <div class="container">
-    <section id="test" class="section">
-      <h2>🧠 Aptitude Test</h2>
-      <div class="question-block">
-        <label>Which subject do you enjoy most?</label>
-        <select>
-          <option>Biology</option>
-          <option>Computer Science</option>
-          <option>Engineering</option>
-          <option>Environmental Science</option>
-        </select>
-      </div>
-      <div class="question-block">
-        <label>How strong are your coding skills?</label>
-        <input type="range" min="0" max="10" />
-      </div>
-      <div class="question-block">
-        <label>Do you prefer working in teams or independently?</label>
-        <select>
-          <option>Teams</option>
-          <option>Independently</option>
-          <option>Both</option>
-        </select>
-      </div>
-      <div class="question-block">
-        <label>What motivates you most?</label>
-        <select>
-          <option>Helping communities</option>
-          <option>Innovation</option>
-          <option>Environmental impact</option>
-        </select>
-      </div>
-      <div class="question-block">
-        <label>How do you prefer to learn?</label>
-        <select>
-          <option>Reading</option>
-          <option>Videos</option>
-          <option>Hands-on projects</option>
-          <option>Mentorship</option>
-        </select>
-      </div>
-      <button class="cta-btn" onclick="showResults()">Submit Test</button>
-    </section>
+<!-- Inside your <body> -->
+<div class="container">
+  <section id="test" class="section active">
+    <h2>🧠 Aptitude Test</h2>
+    <div class="question-block">
+      <label>Which subject do you enjoy most?</label>
+      <select id="q1">
+        <option value="biology">Biology</option>
+        <option value="cs">Computer Science</option>
+        <option value="env">Environmental Science</option>
+        <option value="psych">Psychology</option>
+        <option value="math">Math/Physics</option>
+      </select>
+    </div>
+    <div class="question-block">
+      <label>What motivates you most?</label>
+      <select id="q2">
+        <option value="community">Helping communities</option>
+        <option value="innovation">Innovation</option>
+        <option value="planet">Environmental impact</option>
+        <option value="mind">Understanding the brain</option>
+        <option value="precision">Solving abstract problems</option>
+      </select>
+    </div>
+    <div class="question-block">
+      <label>Preferred work style?</label>
+      <select id="q3">
+        <option value="lab">Lab experiments</option>
+        <option value="virtual">Virtual coding</option>
+        <option value="field">Outdoor fieldwork</option>
+        <option value="team">Team collaboration</option>
+        <option value="solo">Independent research</option>
+      </select>
+    </div>
+    <div class="question-block">
+      <label>Which skill do you want to improve?</label>
+      <select id="q4">
+        <option value="lab">Lab techniques</option>
+        <option value="code">Coding</option>
+        <option value="policy">Policy & advocacy</option>
+        <option value="mental">Mental health support</option>
+        <option value="math">Math modeling</option>
+      </select>
+    </div>
+    <div class="question-block">
+      <label>Are you interested in global health?</label>
+      <select id="q5">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="maybe">Maybe</option>
+      </select>
+    </div>
+    <button class="cta-btn" onclick="showCareerResults()">Submit Test</button>
+  </section>
 
-    <section id="results" class="section">
-      <h2>🎯 Your Career Path Results</h2>
+  <section id="results" class="section"></section>
+</div>
 
-      <div class="career-card">
-        <h3>Biomedical Research</h3>
-        <p><strong>Skills:</strong> Lab work, critical thinking, biology</p>
-        <p><strong>Example Jobs:</strong> Research Scientist, Lab Technician, Clinical Trial Coordinator</p>
-        <p><strong>Education Path:</strong> High School → Biology Major → Grad School</p>
-        <p><strong>Next Steps:</strong> <a href="resource-hub.html">Explore STEM Kits</a>, <a href="volunteer.html">Volunteer</a>, <a href="scholarships.html">Scholarships</a></p>
-      </div>
+<script>
+function showCareerResults() {
+  const q1 = document.getElementById('q1').value;
+  const q2 = document.getElementById('q2').value;
+  const q3 = document.getElementById('q3').value;
+  const q4 = document.getElementById('q4').value;
+  const q5 = document.getElementById('q5').value;
 
-      <div class="career-card">
-        <h3>Data Science in Healthcare</h3>
-        <p><strong>Skills:</strong> Coding, statistics, problem-solving</p>
-        <p><strong>Example Jobs:</strong> Health Data Analyst, Bioinformatician, AI Researcher</p>
-        <p><strong>Education Path:</strong> High School → CS or Stats Major → Grad School</p>
-        <p><strong>Next Steps:</strong> <a href="resource-hub.html">Explore Python Kits</a>, <a href="volunteer.html">Volunteer</a>, <a href="scholarships.html">Scholarships</a></p>
-      </div>
+  let cluster = '';
 
-      <div class="career-card">
-        <h3>Environmental Science & Public Health</h3>
-        <p><strong>Skills:</strong> Field research, policy analysis, communication</p>
-        <p><strong>Example Jobs:</strong> Environmental Scientist, Public Health Educator, Epidemiologist</p>
-        <p><strong>Education Path:</strong> High School → Environmental/Public Health Major → MPH or MS</p>
-        <p><strong>Next Steps:</strong> <a href="resource-hub.html">Explore Climate
+  if (q1 === 'biology' || q4 === 'lab') cluster = 'biomed';
+  else if (q1 === 'cs' || q4 === 'code') cluster = 'datasci';
+  else if (q1 === 'env' || q2 === 'planet') cluster = 'envsci';
+  else if (q1 === 'psych' || q4 === 'mental') cluster = 'psych';
+  else if (q1 === 'math' || q4 === 'math') cluster = 'mathphys';
+  else cluster = 'publichealth';
+
+  const careers = {
+    biomed: {
+      title: "Biomedical Research & Life Sciences",
+      jobs: [
+        "Research Scientist", "Lab Technician", "Clinical Trial Coordinator", "Biostatistician", "Molecular Biologist",
+        "Genetic Counselor", "Pharmacologist", "Biomedical Engineer", "Immunologist", "Toxicologist",
+        "Microbiologist", "Bioinformatics Analyst", "Cancer Researcher", "Neuroscience Researcher", "Virologist"
+      ]
+    },
+    publichealth: {
+      title: "Public Health & Epidemiology",
+      jobs: [
+        "Epidemiologist", "Public Health Educator", "Health Policy Analyst", "Environmental Health Specialist", "Global Health Coordinator",
+        "Community Health Worker", "Health Communications Specialist", "Infection Control Officer", "Maternal & Child Health Advocate",
+        "Health Equity Researcher", "Disaster Response Planner", "Vaccine Outreach Coordinator", "Nutritionist", "Occupational Health Specialist", "Behavioral Health Analyst"
+      ]
+    },
+    datasci: {
+      title: "Data Science & Health Informatics",
+      jobs: [
+        "Health Data Analyst", "Bioinformatician", "Machine Learning Engineer", "Clinical Informatics Specialist", "AI Researcher",
+        "Data Visualization Designer", "Healthcare IT Consultant", "Predictive Modeler", "Database Administrator", "NLP Engineer",
+        "EHR Systems Analyst", "Health App Developer", "Medical Device Data Engineer", "Cybersecurity Analyst", "Digital Epidemiologist"
+      ]
+    },
+    envsci: {
+      title: "Environmental Science & Sustainability",
+      jobs: [
+        "Environmental Scientist", "Climate Policy Analyst", "Sustainability Consultant", "Conservation Biologist", "Ecotoxicologist",
+        "Renewable Energy Engineer", "Water Quality Analyst", "Wildlife Ecologist", "Urban Planner", "Environmental Educator",
+        "Carbon Emissions Analyst", "Forestry Technician", "Marine Biologist", "Environmental Data Modeler", "Green Building Designer"
+      ]
+    },
+    psych: {
+      title: "Psychology & Neuroscience",
+      jobs: [
+        "Clinical Psychologist", "Neuropsychologist", "Cognitive Scientist", "Behavioral Therapist", "Mental Health Counselor",
+        "Psychiatric Researcher", "Brain Imaging Analyst", "Addiction Specialist", "School Psychologist", "Human Factors Engineer",
+        "Social Neuroscientist", "Developmental Psychologist", "Forensic Psychologist", "Sleep Researcher", "Psychometrics Analyst"
+      ]
+    },
+    mathphys: {
+      title: "Math, Physics & Theoretical Science",
+      jobs: [
+        "Physicist", "Mathematician", "Statistician", "Astrophysicist", "Quantum Computing Researcher",
+        "Operations Research Analyst", "Cryptographer", "Mathematical Modeler", "Plasma Physicist", "Computational Scientist",
+        "Actuary", "Nuclear Physicist", "Chaos Theory Analyst", "Geophysicist", "Theoretical Chemist"
+      ]
+    }
+  };
+
+  const selected = careers[cluster];
+  let html = `<h2>🎯 Your Career Path: ${selected.title}</h2>`;
+  html += `<ul>`;
+  selected.jobs.forEach(job => {
+    html += `<li style="margin-bottom: 0.5rem;">${job}</li>`;
+  });
+  html += `</ul>`;
+  html += `<p><strong>Next Steps:</strong> <a href="resource-hub.html">Explore Resources</a>, <a href="volunteer.html">Volunteer</a>, <a href="scholarships.html">Scholarships</a></p>`;
+
+  document.getElementById('results').innerHTML = html;
+  document.getElementById('results').classList.add('active');
+  document.getElementById('test').classList.remove('active');
+  window.scrollTo({ top: document.getElementById('results').offsetTop, behavior: 'smooth' });
+}
+</script>
