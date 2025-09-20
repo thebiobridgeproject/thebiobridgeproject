@@ -3,49 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Online College Classes Hub – The BioBridge Project</title>
+  <title>Free Online College Classes Hub</title>
   <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #222; margin: 0; padding: 0; }
-    header { background: linear-gradient(135deg, #7dd3fc, #a7f3d0); padding: 2rem; text-align: center; }
-    header h1 { font-size: 2.5rem; color: #0891b2; margin-bottom: 0.5rem; }
-    header p { font-size: 1.2rem; color: #0f766e; }
-
-    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
-    .course-card {
-      background: #fff; border-left: 4px solid #7dd3fc; border-radius: 12px;
-      box-shadow: 0 3px 15px rgba(125,211,252,0.09); padding: 1.5rem; margin-bottom: 1.5rem;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #f8fafc; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    header { background: linear-gradient(135deg, #7dd3fc, #a7f3d0); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    nav { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: #0891b2; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links .active { color: #0f766e; border-bottom: 2px solid #0f766e; }
+    .login-btn { background: #0891b2; color: #fff; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: bold; margin-left: 2rem; transition: background 0.2s; }
+    .login-btn:hover { background: #0f766e; }
+    .hero { background: linear-gradient(120deg, #7dd3fc 60%, #fff 100%); padding: 100px 0 60px; text-align: center; }
+    .hero h1 { font-size: 2.8rem; color: #0891b2; margin-bottom: 1rem; }
+    .hero p { font-size: 1.4rem; color: #0f766e; margin-bottom: 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 60px 0; }
+    .section h2 { font-size: 2rem; color: #0891b2; margin-bottom: 1rem; text-align: center; }
+    .section p { font-size: 1.1rem; color: #0f766e; text-align: center; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+    th, td { padding: 1rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+    th { background: #e0f7fa; color: #0891b2; font-weight: 600; }
+    td a { color: #0891b2; font-weight: 600; }
+    td a:hover { color: #0f766e; }
+    footer { background: linear-gradient(135deg, #0891b2, #0f766e); color: #fff; padding: 2.5rem 0; margin-top: 4rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2.2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .footer-links a { color: #fff; font-weight: 500; }
+    .footer-links a:hover { color: #7dd3fc; }
+    footer p { text-align: center; font-size: 1rem; margin-top: 1rem; }
+    @media (max-width: 900px) {
+      .container { padding: 0 1rem; }
+      .nav-links { gap: 1.2rem; }
     }
-    .course-card h2 { margin: 0 0 0.5rem; color: #0891b2; font-size: 1.4rem; }
-    .course-card p { margin: 0.3rem 0; color: #0f766e; }
-    .course-card a { color: #0891b2; font-weight: bold; text-decoration: none; }
-    .course-card a:hover { text-decoration: underline; }
-
-    footer {
-      background: linear-gradient(135deg, #0891b2, #0f766e); color: #fff;
-      text-align: center; padding: 2rem 1rem; margin-top: 4rem;
+    @media (max-width: 700px) {
+      .footer-links { flex-direction: column; gap: 0.7rem; }
+      header nav { flex-direction: column; gap: 0.7rem; }
+      table, thead, tbody, th, td, tr { display: block; }
+      th { background: none; font-weight: bold; }
+      td { padding: 0.5rem 0; border: none; }
     }
-    footer a { color: #fff; margin: 0 1rem; font-weight: 500; text-decoration: none; }
-    footer a:hover { color: #7dd3fc; }
   </style>
 </head>
 <body>
   <header>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="resource-hub.html">Resource Hub</a></li>
-        <li><a href="careerpathexplorer.html">Aptitude Test & Career Path Explorer</a><li>
-        <li><a href="cds.html">T20 Common Data Sets Hub</a></li>
+        <li><a href="careerpathexplorer.html" class="active">Aptitude Test & Career Path Explorer</a><li>
+        <li><a href="cds.html">T20 Schools Common Data Sets Hub</a></li>
         <li><a href="essay-analyzer.html">Essay Analyzer</a></li>
         <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="focch.html">Free Online College Courses</a></li>
       </ul>
     </nav>
   </header>
-    <h1>Free Online College Classes Hub</h1>
-    <p>Explore 100+ free courses from Harvard and other top universities</p>
-  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>T20 Schools Common Data Set Hub</h1>
+      <p>Quick Access to Key College Stats for Informed Decisions</p>
+    </div>
+  </section>
 
   <div class="container">
   <div class="course-card">
