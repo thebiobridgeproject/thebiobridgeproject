@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab Flowchart Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: sans-serif; margin: 2em; background: #f9f9f9; }
+    textarea { width: 100%; height: 150px; margin-bottom: 1em; font-size: 1em; }
+    button { padding: 0.5em 1em; font-size: 1em; }
+    #flowchart { margin-top: 2em; background: white; padding: 1em; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Lab Instructions to Flowchart</h1>
+  <p>Paste your lab instructions below. Each step should be on a new line.</p>
+  <textarea id="instructions" placeholder="1. Prepare materials\n2. Measure 50ml of water\n3. Heat to 80°C\n4. Add solute..."></textarea>
+  <button onclick="generateFlowchart()">Generate Flowchart</button>
+  <div id="flowchart"></div>
+
+  <script>
+    mermaid.initialize({ startOnLoad: false });
+
+    function generateFlowchart() {
+      const input = document.getElementById("instructions").value;
+      const steps = input.split(/\n+/).map(s => s.trim()).filter(s => s);
+      if (steps.length < 2) {
+        alert("Please enter at least two steps.");
+        return;
+      }
+
+      let diagram = "graph TD\n";
+      for (let i = 0; i < steps.length; i++) {
+        const id = `step${i}`;
+        diagram += `${id}["${steps[i]}"]\n`;
+        if (i > 0) {
+          diagram += `step${i - 1} --> ${id}\n`;
+        }
+      }
+
+      const container = document.getElementById("flowchart");
+      container.innerHTML = `<div class="mermaid">${diagram}</div>`;
+      mermaid.init(undefined, container);
+    }
+  </script>
+</body>
+</html>
