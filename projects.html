@@ -20,6 +20,57 @@
         .page-hero { padding: 110px 0 50px; text-align: center; }
         .page-hero h1 { font-size: 2.5rem; color: #0891b2; }
         .page-hero p { color: #0f766e; font-size: 1.2rem; margin-top: 0.5rem; }
+
+        /* NEW ANNOUNCEMENT SECTION */
+        .stem-kits-announcement {
+            background: #e0f7fa;
+            border: 2px solid #7dd3fc;
+            padding: 3rem 1.5rem;
+            margin: 2rem auto 3rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(125,211,252,0.15);
+        }
+        .stem-kits-announcement h2 {
+            color: #0891b2;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .stem-kits-announcement p {
+            color: #0f766e;
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+        .announcement-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .announcement-btn {
+            padding: 0.75rem 1.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            border: 2px solid #0891b2;
+            transition: all 0.2s;
+        }
+        .announcement-btn.primary {
+            background: #0891b2;
+            color: #fff;
+        }
+        .announcement-btn.primary:hover {
+            background: #0f766e;
+        }
+        .announcement-btn.secondary {
+            color: #0891b2;
+            background: #fff;
+        }
+        .announcement-btn.secondary:hover {
+            background: #0891b2;
+            color: #fff;
+        }
+
         .projects-list .container.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; }
         .project-card { background: #fff; border-radius: 15px; box-shadow: 0 5px 20px rgba(125,211,252,0.13); padding: 2rem; border: 2px solid #7dd3fc; text-align: left; }
         .project-card h3 { color: #0891b2; margin-bottom: 0.6rem; }
@@ -31,6 +82,7 @@
         .footer-links a { color: #fff; font-weight: 500; }
         .footer-links a:hover { color: #7dd3fc; }
         footer p { text-align: center; font-size: 1rem; }
+
         @media (max-width: 900px) {
             .container { padding: 0 1rem; }
             .nav-links { gap: 1.2rem; }
@@ -54,15 +106,31 @@
                 <li><a href="essay-analyzer.html">Essay Analyzer</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="focch.html">Free Online College Classes</a></li>
-               </ul>
+            </ul>
         </nav>
     </header>
+
     <section class="page-hero">
         <div class="container">
             <h1>Our STEM Projects</h1>
             <p>Explore our hands-on kits and activities for all grade levels.</p>
         </div>
     </section>
+
+    <!-- NEW ANNOUNCEMENT SECTION -->
+    <section class="stem-kits-announcement">
+        <div class="container">
+            <h2>🎉 Exciting News!</h2>
+            <p>We are now offering <strong>physical, hands-on STEM kits — completely free!</strong></p>
+            <p>Pre-order your kit today and explore real-world science with engaging activities for all ages.</p>
+
+            <div class="announcement-buttons">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLDgiCcKRJ3UTdwxWdnOXGJHifg6PMMLS8Qcxi5KoQe7S1Kg/viewform?usp=sharing&ouid=115585150059365067821" class="announcement-btn primary">Pre‑Order Now</a>
+                <a href="https://docs.google.com/document/d/1tXHZlrtiO0Nz3F6D57mimG8ir5gCIVEXSUAoKaVrjSM/edit?usp=sharing" class="announcement-btn secondary">Take a Peek Inside</a>
+            </div>
+        </div>
+    </section>
+
     <section class="projects-list">
         <div class="container grid">
             <div class="project-card">
@@ -87,6 +155,7 @@
             </div>
         </div>
     </section>
+
     <footer>
         <div class="container">
             <div class="footer-links">
