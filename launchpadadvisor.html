@@ -5,175 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LaunchPad Advisor – The BioBridge Project</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #222; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        header { background: linear-gradient(135deg, #7dd3fc, #a7f3d0); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        nav { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { color: #0891b2; font-weight: 600; transition: color 0.2s; }
-        .nav-links a:hover, .nav-links .active { color: #0f766e; border-bottom: 2px solid #0f766e; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-        .page-hero { padding: 110px 0 40px; text-align: center; }
-        .page-hero h1 { font-size: 2.6rem; color: #0891b2; }
-        .page-hero p { color: #0f766e; font-size: 1.1rem; margin-top: 0.6rem; }
-
-        .subheading { text-align: center; color: #0f766e; margin-bottom: 2rem; }
-
-        .section-card {
-            background: #fff;
-            border-radius: 18px;
-            border: 2px solid #7dd3fc;
-            box-shadow: 0 5px 20px rgba(125,211,252,0.13);
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title {
-            font-size: 1.6rem;
-            color: #0891b2;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-description {
-            color: #0f766e;
-            margin-bottom: 1.2rem;
-        }
-
-        label { font-weight: 600; color: #0f766e; display: block; margin-top: 1rem; margin-bottom: 0.3rem; }
-        select, .quiz-select {
-            width: 100%;
-            padding: 0.7rem;
-            border-radius: 10px;
-            border: 2px solid #7dd3fc;
-            margin-bottom: 0.5rem;
-            background: #f9fdff;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            transition: background 0.2s, transform 0.1s;
-        }
-        .btn-primary {
-            background: #0891b2;
-            color: #fff;
-        }
-        .btn-primary:hover { background: #0f766e; transform: translateY(-1px); }
-        .btn-secondary {
-            background: #fff;
-            color: #0891b2;
-            border: 2px solid #0891b2;
-        }
-        .btn-secondary:hover { background: #0891b2; color: #fff; transform: translateY(-1px); }
-
-        .quiz-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .program-card {
-            background: #fff;
-            border-radius: 15px;
-            border: 2px solid #7dd3fc;
-            box-shadow: 0 5px 20px rgba(125,211,252,0.13);
-            padding: 1.4rem;
-        }
-        .program-card h3 {
-            color: #0891b2;
-            margin-bottom: 0.4rem;
-            font-size: 1.1rem;
-        }
-        .tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin: 0.4rem 0 0.6rem;
-        }
-        .tag {
-            font-size: 0.78rem;
-            padding: 0.2rem 0.55rem;
-            border-radius: 999px;
-            border: 1px solid #7dd3fc;
-            color: #0f766e;
-            background: #f0fbff;
-        }
-        .program-meta {
-            font-size: 0.9rem;
-            color: #0f766e;
-            margin-bottom: 0.6rem;
-        }
-        .program-link {
-            display: inline-block;
-            margin-top: 0.4rem;
-            padding: 0.45rem 1.1rem;
-            border-radius: 20px;
-            border: 2px solid #0891b2;
-            color: #0891b2;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .program-link:hover { background: #0891b2; color: #fff; }
-
-        .pill-heading {
-            font-weight: 700;
-            color: #0f766e;
-            margin-top: 1.2rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .filters-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .small-note {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 0.4rem;
-        }
-
-        footer {
-            background: linear-gradient(135deg, #0891b2, #0f766e);
-            color: #fff;
-            padding: 2.5rem 0;
-            margin-top: 3rem;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        .footer-links a { color: #fff; font-weight: 500; }
-        .footer-links a:hover { color: #7dd3fc; }
-        footer p { text-align: center; font-size: 0.95rem; }
-
-        @media (max-width: 700px) {
-            .container { padding: 0 1rem; }
-            header nav { flex-direction: column; gap: 0.7rem; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
-        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Arial,sans-serif;background:#f8fafc;color:#111827;}
+        a{text-decoration:none;color:inherit;}
+        ul{list-style:none;}
+        header{background:linear-gradient(135deg,#7dd3fc,#a7f3d0);box-shadow:0 2px 10px rgba(0,0,0,0.08);}
+        nav{display:flex;align-items:center;justify-content:center;padding:1rem 2rem;}
+        .nav-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+        .nav-links a{color:#0891b2;font-weight:600;transition:color .2s,border-bottom .2s;}
+        .nav-links a:hover,.nav-links .active{color:#0f766e;border-bottom:2px solid #0f766e;}
+        .container{max-width:1100px;margin:0 auto;padding:0 2rem;}
+        .page-hero{padding:110px 0 40px;text-align:center;}
+        .page-hero h1{font-size:2.6rem;color:#0891b2;}
+        .page-hero p{color:#0f766e;font-size:1.05rem;margin-top:.6rem;}
+        .subheading{text-align:center;color:#0f766e;margin-bottom:1.5rem;}
+        .section-card{background:#fff;border-radius:18px;border:2px solid #7dd3fc;box-shadow:0 5px 20px rgba(125,211,252,0.13);padding:2rem;margin-bottom:2.5rem;}
+        .section-title{font-size:1.6rem;color:#0891b2;margin-bottom:.4rem;}
+        .section-description{color:#0f766e;margin-bottom:1rem;}
+        label{font-weight:600;color:#0f766e;display:block;margin-top:1rem;margin-bottom:.3rem;}
+        select{width:100%;padding:.7rem;border-radius:10px;border:2px solid #7dd3fc;margin-bottom:.3rem;background:#f9fdff;}
+        .btn{display:inline-block;padding:.8rem 2rem;border-radius:25px;border:none;cursor:pointer;font-weight:700;transition:background .2s,transform .1s;font-size:.95rem;}
+        .btn-primary{background:#0891b2;color:#fff;}
+        .btn-primary:hover{background:#0f766e;transform:translateY(-1px);}
+        .btn-secondary{background:#fff;color:#0891b2;border:2px solid #0891b2;}
+        .btn-secondary:hover{background:#0891b2;color:#fff;transform:translateY(-1px);}
+        .quiz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin-top:1rem;}
+        .filters-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem;}
+        .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1.5rem;}
+        .program-card{background:#fff;border-radius:15px;border:2px solid #7dd3fc;box-shadow:0 5px 20px rgba(125,211,252,0.13);padding:1.4rem 1.5rem;}
+        .program-card h3{color:#0891b2;margin-bottom:.3rem;font-size:1.1rem;}
+        .program-field{font-size:.85rem;color:#0f766e;font-weight:600;margin-bottom:.4rem;}
+        .program-description{font-size:.9rem;color:#4b5563;margin-bottom:.5rem;}
+        .program-line{font-size:.85rem;color:#111827;margin-bottom:.25rem;}
+        .program-label{font-weight:600;color:#0f766e;}
+        .tag-row{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0 .6rem;}
+        .tag{font-size:.75rem;padding:.18rem .55rem;border-radius:999px;border:1px solid #7dd3fc;color:#0f766e;background:#f0fbff;}
+        .program-link{display:inline-block;margin-top:.5rem;padding:.45rem 1.1rem;border-radius:20px;border:2px solid #0891b2;color:#0891b2;font-weight:600;font-size:.9rem;}
+        .program-link:hover{background:#0891b2;color:#fff;}
+        .pill-heading{font-weight:700;color:#0f766e;margin-top:1.2rem;margin-bottom:.4rem;}
+        .small-note{font-size:.8rem;color:#64748b;margin-top:.3rem;}
+        .legend{font-size:.85rem;color:#4b5563;margin-top:.6rem;line-height:1.4;}
+        footer{background:linear-gradient(135deg,#0891b2,#0f766e);color:#fff;padding:2.5rem 0;margin-top:3rem;}
+        .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:1rem;flex-wrap:wrap;}
+        .footer-links a{color:#fff;font-weight:500;}
+        .footer-links a:hover{color:#7dd3fc;}
+        footer p{text-align:center;font-size:.95rem;}
+        @media(max-width:700px){.container{padding:0 1rem;}header nav{flex-direction:column;gap:.7rem;}}
     </style>
 </head>
 <body>
@@ -184,7 +61,7 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="launchpadadvisor.html" class="active">LaunchPad Advisor</a></li>
             <li><a href="resource-hub.html">Resource Hub</a></li>
-            <li><a href="careerpathexplorer.html">Aptitude Test & Career Path Explorer</a><li>
+            <li><a href="careerpathexplorer.html">Aptitude Test & Career Path Explorer</a></li>
             <li><a href="cds.html">T20 Common Data Sets Hub</a></li>
             <li><a href="essay-analyzer.html">Essay Analyzer</a></li>
             <li><a href="research.html">Research</a></li>
@@ -192,179 +69,171 @@
         </ul>
     </nav>
 </header>
-
 <section class="page-hero">
     <div class="container">
         <h1>LaunchPad Advisor</h1>
-        <p>Match with high-impact extracurriculars, summer programs, and internships based on your interests, budget, and goals.</p>
+        <p>Find high-impact extracurriculars, summer programs, and internships that actually move the needle.</p>
     </div>
 </section>
-
 <div class="container">
-    <p class="subheading">Use the quiz for personalized picks, or explore everything with filters.</p>
-
-    <!-- QUIZ / ADVISOR MODE -->
+    <p class="subheading">Use the quiz for quick matches, or explore everything with filters.</p>
+    <section class="section-card">
+        <h2 class="section-title">How to read each program card</h2>
+        <p class="section-description">For each program you’ll find:</p>
+        <div class="legend">
+            📍 Field • 📘 Program Name + Description • 📍 Location (In‑Person / Virtual)<br>
+            🔗 Official Website • 📅 Dates (Summer 2026) • 💰 Cost / Tuition • 💵 Stipend (if any)<br>
+            📊 Quantitative Competitiveness (Tier 1–5) • 🔥 Qualitative Competitiveness • 📆 Apply‑By Deadline
+            <br><br>
+            <strong>Tier guide:</strong> Tier 5 ≈ &lt;5% admit • Tier 4 ≈ 5–15% • Tier 3 ≈ 15–35% • Tier 2 ≈ 35–60% • Tier 1 = open / local.<br>
+            <strong>Cost guide:</strong> Free → $ → $$ → $$$ → $$$$ (higher cost, aid varies).
+        </div>
+    </section>
     <section class="section-card" id="quiz-section">
         <h2 class="section-title">Advisor Quiz</h2>
-        <p class="section-description">Answer a few quick questions and get a curated list of best-fit, stretch, and safer programs.</p>
-
+        <p class="section-description">Answer a few questions and get a short list of best-fit, stretch, and safer programs.</p>
         <div class="quiz-grid">
             <div>
-                <label for="quiz-field">What fields are you most interested in?</label>
-                <select id="quiz-field" class="quiz-select">
-                    <option value="">Any field</option>
-                    <option value="Medicine / Biomed / Neuro">Medicine / Biomed / Neuro</option>
-                    <option value="Neuroscience / CogSci / Psych">Neuroscience / CogSci / Psych</option>
-                    <option value="CS / AI / Data">CS / AI / Data</option>
-                    <option value="Pure Science">Pure Science</option>
-                    <option value="Architecture / Urban Design / Planning">Architecture / Urban Design / Planning</option>
-                    <option value="Public Policy / IR / Global Affairs">Public Policy / IR / Global Affairs</option>
-                    <option value="Law / Justice">Law / Justice</option>
-                    <option value="Business / Econ / Finance">Business / Econ / Finance</option>
-                    <option value="Design / Media / Film">Design / Media / Film</option>
-                    <option value="Environment / Climate / Geo">Environment / Climate / Geo</option>
+                <label for="quiz-broad-field">What general area are you most interested in?</label>
+                <select id="quiz-broad-field">
+                    <option value="">Any area</option>
+                    <option value="STEM">STEM (Science, Research, CS, Math, Engineering)</option>
+                    <option value="Medicine">Medicine / Biomed / Neuro</option>
+                    <option value="Business">Business / Finance / Entrepreneurship</option>
+                    <option value="LawPolicy">Law / Public Policy / Government</option>
+                    <option value="ArtsMedia">Arts / Media / Design / Film</option>
+                    <option value="Global">Global / International / Leadership</option>
+                    <option value="Environment">Environment / Climate / Earth Science</option>
+                    <option value="Humanities">Social Sciences / Humanities / Languages</option>
                 </select>
             </div>
-
             <div>
                 <label for="quiz-cost">What’s your budget?</label>
-                <select id="quiz-cost" class="quiz-select">
+                <select id="quiz-cost">
                     <option value="">Any</option>
-                    <option value="FREE">Free only</option>
-                    <option value="LOW">Low / $$</option>
-                    <option value="ANY">I’m open to $$$/$$$$</option>
+                    <option value="FreeOnly">Free only</option>
+                    <option value="Low">Low / $–$$</option>
+                    <option value="Open">Open to $$$/$$$$</option>
                 </select>
             </div>
-
             <div>
-                <label for="quiz-pay">Do you need the program to be paid?</label>
-                <select id="quiz-pay" class="quiz-select">
+                <label for="quiz-stipend">Do you want/need a stipend?</label>
+                <select id="quiz-stipend">
                     <option value="">Doesn’t matter</option>
-                    <option value="Paid">Yes, paid or stipend</option>
-                    <option value="Unpaid">No, unpaid is fine</option>
+                    <option value="Yes">Yes, stipend preferred</option>
+                    <option value="No">No, experience is the priority</option>
                 </select>
             </div>
-
             <div>
-                <label for="quiz-competitiveness">How competitive do you want it to be?</label>
-                <select id="quiz-competitiveness" class="quiz-select">
+                <label for="quiz-tier">How competitive do you want it to be?</label>
+                <select id="quiz-tier">
                     <option value="">Mix of all</option>
-                    <option value="LOW">Chill (🔥–🔥🔥)</option>
-                    <option value="MEDIUM">Balanced (🔥🔥–🔥🔥🔥)</option>
-                    <option value="HIGH">Max signal (🔥🔥🔥–🔥🔥🔥🔥)</option>
+                    <option value="Lower">More accessible (Tier 1–2)</option>
+                    <option value="Medium">Balanced (Tier 2–3)</option>
+                    <option value="High">High signal (Tier 4–5)</option>
                 </select>
             </div>
-
             <div>
-                <label for="quiz-timeline">When are you planning to apply?</label>
-                <select id="quiz-timeline" class="quiz-select">
+                <label for="quiz-deadline">When are you planning to apply?</label>
+                <select id="quiz-deadline">
                     <option value="">Any time</option>
-                    <option value="AUG-SEPT">Aug–Sept</option>
-                    <option value="OCT-NOV">Oct–Nov</option>
-                    <option value="DEC-JAN">Dec–Jan</option>
-                    <option value="FEB-MAR">Feb–Mar</option>
-                    <option value="APR-MAY">Apr–May</option>
+                    <option value="Dec-Jan">Dec–Jan</</option>
+                    <option value="Feb-Mar">Feb–Mar</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Early">Early Year</option>
+                    <option value="Varies">Varies / rolling</option>
                 </select>
-                <p class="small-note">Timeline is approximate and can vary year to year.</p>
+                <p class="small-note">Deadlines shift year to year—always confirm on the official site.</p>
             </div>
         </div>
-
         <div style="margin-top:1.5rem;">
             <button class="btn btn-primary" onclick="runQuiz()">Get My Matches</button>
         </div>
-
         <div id="quiz-results" style="margin-top:1.8rem;"></div>
     </section>
-
-    <!-- EXPLORER / FILTER MODE -->
     <section class="section-card" id="explorer-section">
         <h2 class="section-title">Explore All Programs</h2>
-        <p class="section-description">Filter by field, cost, competitiveness, and more. Use this like a searchable index of high-value opportunities.</p>
-
+        <p class="section-description">Use filters to explore all opportunities in the database.</p>
         <div class="filters-row">
             <div>
-                <label for="filter-field">Field</label>
-                <select id="filter-field">
-                    <option value="">All fields</option>
-                    <option value="Medicine / Biomed / Neuro">Medicine / Biomed / Neuro</option>
-                    <option value="Neuroscience / CogSci / Psych">Neuroscience / CogSci / Psych</option>
-                    <option value="CS / AI / Data">CS / AI / Data</option>
-                    <option value="Pure Science">Pure Science</option>
-                    <option value="Architecture / Urban Design / Planning">Architecture / Urban Design / Planning</option>
-                    <option value="Public Policy / IR / Global Affairs">Public Policy / IR / Global Affairs</option>
-                    <option value="Law / Justice">Law / Justice</option>
-                    <option value="Business / Econ / Finance">Business / Econ / Finance</option>
-                    <option value="Design / Media / Film">Design / Media / Film</option>
-                    <option value="Environment / Climate / Geo">Environment / Climate / Geo</option>
+                <label for="filter-broad-field">Area</label>
+                <select id="filter-broad-field">
+                    <option value="">All areas</option>
+                    <option value="STEM">STEM</option>
+                    <option value="Medicine">Medicine / Biomed / Neuro</option>
+                    <option value="Business">Business / Finance / Entrepreneurship</option>
+                    <option value="LawPolicy">Law / Public Policy / Government</option>
+                    <option value="ArtsMedia">Arts / Media / Design / Film</option>
+                    <option value="Global">Global / International / Leadership</option>
+                    <option value="Environment">Environment / Climate / Earth Science</option>
+                    <option value="Humanities">Social Sciences / Humanities / Languages</option>
+                    <option value="Specialized">Specialized / Niche</option>
                 </select>
             </div>
-
             <div>
                 <label for="filter-cost">Cost</label>
                 <select id="filter-cost">
                     <option value="">Any</option>
-                    <option value="FREE">Free</option>
+                    <option value="Free">Free</option>
+                    <option value="$">$ / low</option>
                     <option value="$$">$$</option>
                     <option value="$$$">$$$</option>
                     <option value="$$$$">$$$$</option>
                 </select>
             </div>
-
             <div>
-                <label for="filter-pay">Pay</label>
-                <select id="filter-pay">
+                <label for="filter-stipend">Stipend</label>
+                <select id="filter-stipend">
                     <option value="">Any</option>
-                    <option value="Paid">Paid</option>
-                    <option value="Unpaid">Unpaid</option>
-                    <option value="Variable">Variable</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Sometimes">Sometimes / Varies</option>
                 </select>
             </div>
-
             <div>
-                <label for="filter-competitiveness">Competitiveness</label>
-                <select id="filter-competitiveness">
+                <label for="filter-tier">Quantitative Tier</label>
+                <select id="filter-tier">
                     <option value="">Any</option>
-                    <option value="1">🔥 (lower)</option>
-                    <option value="2">🔥🔥 (medium)</option>
-                    <option value="3">🔥🔥🔥 (high)</option>
-                    <option value="4">🔥🔥🔥🔥 (extreme)</option>
+                    <option value="1">Tier 1 (most accessible)</option>
+                    <option value="2">Tier 2</option>
+                    <option value="3">Tier 3</option>
+                    <option value="4">Tier 4</option>
+                    <option value="5">Tier 5 (most selective)</option>
                 </select>
             </div>
-
             <div>
-                <label for="filter-timeline">Application Window</label>
-                <select id="filter-timeline">
+                <label for="filter-deadline">Apply‑By Window</label>
+                <select id="filter-deadline">
                     <option value="">Any</option>
-                    <option value="AUG-SEPT">Aug–Sept</option>
-                    <option value="OCT-NOV">Oct–Nov</option>
-                    <option value="DEC-JAN">Dec–Jan</option>
-                    <option value="FEB-MAR">Feb–Mar</option>
-                    <option value="APR-MAY">Apr–May</option>
+                    <option value="Dec-Jan">Dec–Jan</option>
+                    <option value="Feb-Mar">Feb–Mar</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Early">Early Year</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">February</option>
+                    <option value="Mar-Apr">Mar–Apr</option>
+                    <option value="Varies">Varies / Rolling</option>
                 </select>
             </div>
-
             <div>
                 <label for="filter-sort">Sort by</label>
                 <select id="filter-sort">
                     <option value="">Default</option>
+                    <option value="tier-asc">Tier: low → high</option>
+                    <option value="tier-desc">Tier: high → low</option>
                     <option value="cost-asc">Cost: least → most</option>
                     <option value="cost-desc">Cost: most → least</option>
-                    <option value="comp-asc">Competitiveness: low → high</option>
-                    <option value="comp-desc">Competitiveness: high → low</option>
                     <option value="name-asc">Name A–Z</option>
                 </select>
             </div>
         </div>
-
         <div style="margin-top:1.2rem;">
             <button class="btn btn-secondary" onclick="applyFilters()">Apply Filters</button>
-            <button class="btn btn-secondary" style="margin-left:0.5rem;" onclick="resetFilters()">Reset</button>
+            <button class="btn btn-secondary" style="margin-left:.5rem;" onclick="resetFilters()">Reset</button>
         </div>
-
         <div id="explorer-results" class="results-grid"></div>
     </section>
 </div>
-
 <footer>
     <div class="container">
         <div class="footer-links">
@@ -381,228 +250,219 @@
         <p>© 2025 The BioBridge Project</p>
     </div>
 </footer>
-
 <script>
-    const programs = [
-        // MEDICINE / BIOMED / NEURO
-        { name: "UCSF SEP", field: "Medicine / Biomed / Neuro", type: "Biomedical Research", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "FEB-MAR", link: "" },
-        { name: "Memorial Sloan Kettering HOPP", field: "Medicine / Biomed / Neuro", type: "Cancer Research", cost: "FREE", pay: "Paid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Johns Hopkins ASPIRE", field: "Medicine / Biomed / Neuro", type: "STEM Research", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Mayo Clinic SPARK", field: "Medicine / Biomed / Neuro", type: "Medicine / Research", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Cleveland Clinic Student Research", field: "Medicine / Biomed / Neuro", type: "Biomedical Research", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-        { name: "Children’s Hospital Summer Scholars", field: "Medicine / Biomed / Neuro", type: "Clinical Research", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-
-        // NEURO / COG SCI / PSYCH
-        { name: "Harvard SSP Neuroscience Track", field: "Neuroscience / CogSci / Psych", type: "Research", cost: "$$$", pay: "Unpaid", competitiveness: 4, timeline: "AUG-SEPT", link: "" },
-        { name: "MIT BWSI (Neuro/Cognition Track)", field: "Neuroscience / CogSci / Psych", type: "Research", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "OCT-NOV", link: "" },
-        { name: "UC Berkeley Neuro Lab HS Internships", field: "Neuroscience / CogSci / Psych", type: "Research", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Local University Neuro Labs", field: "Neuroscience / CogSci / Psych", type: "Research", cost: "FREE", pay: "Variable", competitiveness: 2, timeline: "APR-MAY", link: "" },
-
-        // CS / AI / DATA
-        { name: "MIT BWSI", field: "CS / AI / Data", type: "AI / Engineering", cost: "FREE", pay: "Unpaid", competitiveness: 4, timeline: "OCT-NOV", link: "" },
-        { name: "Meta Summer Academy", field: "CS / AI / Data", type: "CS / Product", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Amazon Future Engineer", field: "CS / AI / Data", type: "CS", cost: "FREE", pay: "Paid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Girls Who Code SIP", field: "CS / AI / Data", type: "CS", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-        { name: "Kode with Klossy", field: "CS / AI / Data", type: "CS", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-
-        // PURE SCIENCE
-        { name: "Harvard SSP", field: "Pure Science", type: "Research", cost: "$$$$", pay: "Unpaid", competitiveness: 4, timeline: "AUG-SEPT", link: "" },
-        { name: "Garcia Research @ Stony Brook", field: "Pure Science", type: "Materials Science", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Fermilab TARGET", field: "Pure Science", type: "Physics", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Brookhaven HS Research", field: "Pure Science", type: "Physics/Chem", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Argonne National Lab HS Internships", field: "Pure Science", type: "STEM", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "OCT-NOV", link: "" },
-
-        // ARCHITECTURE / URBAN DESIGN / PLANNING
-        { name: "Cornell AAP Pre-College", field: "Architecture / Urban Design / Planning", type: "Architecture", cost: "$$$$", pay: "Unpaid", competitiveness: 3, timeline: "APR-MAY", link: "" },
-        { name: "RISD Architecture Summer", field: "Architecture / Urban Design / Planning", type: "Design", cost: "$$$$", pay: "Unpaid", competitiveness: 2, timeline: "APR-MAY", link: "" },
-        { name: "USC Architecture Summer", field: "Architecture / Urban Design / Planning", type: "Architecture", cost: "$$$", pay: "Unpaid", competitiveness: 2, timeline: "APR-MAY", link: "" },
-        { name: "Local Architecture Firm Internships", field: "Architecture / Urban Design / Planning", type: "Practice", cost: "FREE", pay: "Unpaid", competitiveness: 1, timeline: "APR-MAY", link: "" },
-
-        // PUBLIC POLICY / IR / GLOBAL AFFAIRS
-        { name: "Yale Young Global Scholars", field: "Public Policy / IR / Global Affairs", type: "Policy/IR", cost: "$$$$", pay: "Unpaid", competitiveness: 3, timeline: "AUG-SEPT", link: "" },
-        { name: "Princeton Summer Journalism", field: "Public Policy / IR / Global Affairs", type: "Journalism", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "State Dept HS Internships", field: "Public Policy / IR / Global Affairs", type: "Government", cost: "FREE", pay: "Variable", competitiveness: 3, timeline: "OCT-NOV", link: "" },
-        { name: "UN Youth Programs", field: "Public Policy / IR / Global Affairs", type: "Global Affairs", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-
-        // LAW / JUSTICE
-        { name: "DOJ High School Internships", field: "Law / Justice", type: "Law", cost: "FREE", pay: "Variable", competitiveness: 3, timeline: "OCT-NOV", link: "" },
-        { name: "ACLU Summer Advocacy", field: "Law / Justice", type: "Civil Rights", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-        { name: "Georgetown Law Academy", field: "Law / Justice", type: "Law", cost: "$$$", pay: "Unpaid", competitiveness: 2, timeline: "APR-MAY", link: "" },
-        { name: "Mock Trial National Programs", field: "Law / Justice", type: "Law", cost: "$$", pay: "Unpaid", competitiveness: 2, timeline: "APR-MAY", link: "" },
-
-        // BUSINESS / ECON / FINANCE
-        { name: "UChicago Economics Summer", field: "Business / Econ / Finance", type: "Econ", cost: "$$$", pay: "Unpaid", competitiveness: 3, timeline: "AUG-SEPT", link: "" },
-        { name: "NYU Stern Summer", field: "Business / Econ / Finance", type: "Business", cost: "$$$$", pay: "Unpaid", competitiveness: 3, timeline: "AUG-SEPT", link: "" },
-        { name: "Goldman Sachs HS Programs", field: "Business / Econ / Finance", type: "Finance", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "JP Morgan Advancing Black Pathways", field: "Business / Econ / Finance", type: "Finance", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "Federal Reserve Bank Internships", field: "Business / Econ / Finance", type: "Econ", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "OCT-NOV", link: "" },
-
-        // DESIGN / MEDIA / FILM
-        { name: "CalArts Summer Animation", field: "Design / Media / Film", type: "Animation", cost: "$$$$", pay: "Unpaid", competitiveness: 3, timeline: "APR-MAY", link: "" },
-        { name: "USC Film & TV Summer", field: "Design / Media / Film", type: "Film", cost: "$$$$", pay: "Unpaid", competitiveness: 3, timeline: "APR-MAY", link: "" },
-        { name: "Adobe Digital Academy", field: "Design / Media / Film", type: "Design", cost: "FREE", pay: "Variable", competitiveness: 3, timeline: "FEB-MAR", link: "" },
-        { name: "NPR Student Journalism", field: "Design / Media / Film", type: "Media", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-
-        // ENVIRONMENT / CLIMATE / GEO
-        { name: "NOAA HS Internships", field: "Environment / Climate / Geo", type: "Climate", cost: "FREE", pay: "Paid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "EPA HS Research Programs", field: "Environment / Climate / Geo", type: "Env Science", cost: "FREE", pay: "Unpaid", competitiveness: 3, timeline: "DEC-JAN", link: "" },
-        { name: "National Geographic Youth Programs", field: "Environment / Climate / Geo", type: "Env/Media", cost: "FREE", pay: "Unpaid", competitiveness: 2, timeline: "FEB-MAR", link: "" },
-        { name: "State Conservation Corps", field: "Environment / Climate / Geo", type: "Field work", cost: "FREE", pay: "Variable", competitiveness: 2, timeline: "APR-MAY", link: "" }
-    ];
-
-    const costRank = { "FREE": 0, "$$": 2, "$$$": 3, "$$$$": 4 };
-
-    function competitivenessToFlames(level) {
-        return "🔥".repeat(level);
+    const costRank = (cost)=>{
+        if(!cost)return 2;
+        const c=cost.toLowerCase();
+        if(c.includes("free"))return 0;
+        if(c.includes("$$$$"))return 4;
+        if(c.includes("$$$"))return 3;
+        if(c.includes("$$"))return 2;
+        if(c.includes("$"))return 1;
+        return 2;
+    };
+    function inferBroadField(field){
+        const f=field.toLowerCase();
+        if(f.includes("biomed")||f.includes("medicine")||f.includes("neuro"))return "Medicine";
+        if(f.includes("genomics")||f.includes("stem research")||f.includes("physics")||f.includes("science")||f.includes("geoscience")||f.includes("earth"))return "STEM";
+        if(f.includes("cs")||f.includes("computer")||f.includes("engineering")||f.includes("robotics")||f.includes("cyber"))return "STEM";
+        if(f.includes("business")||f.includes("finance")||f.includes("econ")||f.includes("entrepreneur"))return "Business";
+        if(f.includes("law")||f.includes("policy")||f.includes("government")||f.includes("civic"))return "LawPolicy";
+        if(f.includes("film")||f.includes("media")||f.includes("design")||f.includes("animation")||f.includes("journalism")||f.includes("visual"))return "ArtsMedia";
+        if(f.includes("global")||f.includes("leadership")||f.includes("diplomacy")||f.includes("affairs")||f.includes("un "))return "Global";
+        if(f.includes("environment")||f.includes("marine")||f.includes("climate"))return "Environment";
+        if(f.includes("humanities")||f.includes("social")||f.includes("language")||f.includes("culture"))return "Humanities";
+        return "Specialized";
     }
-
-    function renderPrograms(list, containerId) {
-        const container = document.getElementById(containerId);
-        if (!list.length) {
-            container.innerHTML = "<p style='color:#0f766e;'>No programs match those filters yet. Try relaxing one or two options.</p>";
+    function normalizeDeadline(raw){
+        if(!raw)return "";
+        const r=raw.toLowerCase();
+        if(r.includes("late fall"))return "Early";
+        if(r.includes("dec")||r.includes("jan")&&!r.includes("feb"))return "Dec-Jan";
+        if(r.includes("feb")||r.includes("mar"))return "Feb-Mar";
+        if(r.includes("spring"))return "Spring";
+        if(r.includes("early"))return "Early";
+        if(r.includes("jan"))return "Jan";
+        if(r.includes("feb"))return "Feb";
+        if(r.includes("mar")||r.includes("apr"))return "Mar-Apr";
+        if(r.includes("varies")||r.includes("rolling"))return "Varies";
+        return "";
+    }
+    const programs=[
+        {name:"Research Science Institute (RSI)",field:"STEM Research (multi-disciplinary)",description:"6-week residential research + mentorship and advanced STEM coursework.",location:"Cambridge, MA (In-Person)",website:"https://cee.org/research-science-institute",dates:"~June–July 2026",cost:"Free",stipend:"No",quantTier:5,qualComp:"Extremely Competitive",deadlineRaw:"Dec–Jan"},
+        {name:"Stanford Institutes of Medicine Summer Research (SIMR)",field:"Biomedical & Medical Research",description:"8-week lab research with Stanford faculty mentors.",location:"Stanford, CA (In-Person)",website:"https://simr.stanford.edu",dates:"June 8 – July 30, 2026",cost:"Free",stipend:"Yes ($500–2,500)",quantTier:5,qualComp:"Very Competitive",deadlineRaw:"Feb 21, 2026"},
+        {name:"Aspirnaut High School Summer Research Internship",field:"STEM Research",description:"Full-time lab research, seminars, and mentorship.",location:"Varies",website:"https://aspirnaut.org/high-school-internships/",dates:"May 31 – July 11, 2026",cost:"Free",stipend:"Typically yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Early 2026"},
+        {name:"NIH High School Summer Internship Program (SIP)",field:"Biomedical & Science Research",description:"Lab research with NIH scientists plus professional poster presentation.",location:"US NIH Campuses (In-Person)",website:"https://www.training.nih.gov/programs/sip",dates:"June–August (2026 schedule TBD)",cost:"Free",stipend:"Yes",quantTier:5,qualComp:"Very Competitive",deadlineRaw:"~Feb 2026"},
+        {name:"NASA High School Internship Program",field:"STEM / Aerospace Research",description:"Work with NASA scientists and engineers on real research projects.",location:"NASA Centers Nationwide (In-Person)",website:"https://intern.nasa.gov",dates:"Summer 2026 (varies by center)",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Winter/Spring 2026"},
+        {name:"Fermilab PRISM High School Internship",field:"Physics & Engineering",description:"Particle physics research with poster and final presentation.",location:"Batavia, IL (In-Person)",website:"https://www.fnal.gov/education",dates:"July 13 – Aug 7, 2026",cost:"Free",stipend:"Yes (~$500/week)",quantTier:4,qualComp:"Competitive",deadlineRaw:"Mar 1, 2026"},
+        {name:"Simons Summer Research Program — Stony Brook University",field:"STEM Research",description:"5–7 week mentored research with poster and abstract.",location:"Stony Brook, NY",website:"https://www.stonybrook.edu/commcms/simons",dates:"Jul 1 – Aug 9, 2026",cost:"Free",stipend:"Sometimes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Feb 7, 2026"},
+        {name:"UMES Geosciences Bridge Program",field:"Earth Science / Geosciences",description:"Paid science internship with lectures and field experiences.",location:"Maryland Eastern Shore",website:"https://www.nshss.org/resources/blog",dates:"~Summer 2026",cost:"Free",stipend:"Yes",quantTier:3,qualComp:"Moderate",deadlineRaw:"Typically Spring"},
+        {name:"Smithsonian Internships",field:"Multiple (Science, History, Museum Work)",description:"Hands-on projects in research, collections, and exhibits.",location:"Smithsonian Museums & Research Centers (In-Person)",website:"https://www.si.edu/Internships",dates:"Varies Summer 2026",cost:"Free",stipend:"Some offer stipends",quantTier:4,qualComp:"Competitive",deadlineRaw:"Varies"},
+        {name:"Summer Science Program (SSP)",field:"Physics / Astronomy / Engineering",description:"6-week intensive astrophysics or biochemistry research program.",location:"Indiana & New Mexico (In-Person)",website:"https://summerscience.org",dates:"Jun 17 – Jul 29, 2026",cost:"$$$$ (~$8,000, aid available)",stipend:"No",quantTier:5,qualComp:"Very Competitive",deadlineRaw:"Feb 15, 2026"},
+        {name:"Google Computer Science Summer Institute (CSSI)",field:"Computer Science",description:"Intensive CS fundamentals and project-based learning.",location:"Virtual & In-Person (varies)",website:"https://buildyourfuture.withgoogle.com/programs/cssi",dates:"Summer 2026",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Early 2026"},
+        {name:"Microsoft High School Discovery Program",field:"Software Engineering & Tech",description:"Coding projects, collaboration, and exposure to software development.",location:"Redmond, WA (In-Person)",website:"https://careers.microsoft.com/students/us/en/HighSchoolPrograms",dates:"Summer 2026",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Early 2026"},
+        {name:"NASA High School Aerospace Scholars (HAS)",field:"Aerospace / STEM",description:"Online modules, team projects, and interaction with engineers.",location:"Virtual",website:"https://www.nasa.gov/education/hass",dates:"Spring/Summer 2026",cost:"Free",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"Early 2026"},
+        {name:"SAMS (Summer Academy for Math & Science)",field:"Math & Science",description:"6-week residential program with advanced STEM coursework.",location:"Pittsburgh, PA (In-Person)",website:"https://www.cmu.edu/pre-college/academic-programs/sams.html",dates:"Jun 22 – Aug 3, 2026",cost:"Free",stipend:"No",quantTier:3,qualComp:"Competitive",deadlineRaw:"Spring 2026"},
+        {name:"COSMOS — UC System STEM Courses",field:"STEM / Math / Engineering",description:"4-week advanced STEM courses with labs and group projects.",location:"UC Davis, UC Irvine, UC San Diego, UC Santa Cruz",website:"https://cosmos.ucop.edu",dates:"June 2026",cost:"$$$",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"Feb–Mar 2026"},
+        {name:"Tufts Summer Research Experience",field:"Biomedical Research",description:"Lab research, experimental design, and scientific presentations.",location:"Medford, MA (In-Person)",website:"https://universitycollege.tufts.edu/high-school/programs",dates:"Jul–Aug 2026",cost:"$$-$$$",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"March"},
+        {name:"City of Hope Summer Student Academy",field:"Biomedical Research",description:"Hands-on lab projects and oncology-focused medical research.",location:"Duarte, CA (In-Person)",website:"https://www.cityofhope.org/education/summer-student-academy",dates:"June–Aug 2026",cost:"Free",stipend:"Yes (~$4,000)",quantTier:4,qualComp:"Competitive",deadlineRaw:"Spring"},
+        {name:"Broad Summer Scholars Program",field:"Genomics / Biomedical Research",description:"Work in Broad Institute labs with research mentors.",location:"Cambridge, MA (In-Person)",website:"https://www.broadinstitute.org/education/summer-scholars",dates:"Summer 2026",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Jan–Feb"},
+        {name:"Johns Hopkins Internship in Brain Sciences (JHIBS)",field:"Neuroscience Research",description:"Behavioral and neuroscience research projects with Hopkins faculty.",location:"Baltimore, MD (Hybrid)",website:"https://www.hopkinsmedicine.org/education/student-programs/jhibs",dates:"Jun–Aug 2026",cost:"Free",stipend:"Sometimes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Spring"},
+        {name:"Bank of America Student Leaders",field:"Business / Leadership / Civic Engagement",description:"Paid nonprofit internship plus national leadership summit.",location:"Local placements + Washington, DC Summit",website:"https://www.bankofamerica.com/studentleaders",dates:"Summer 2026",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"February"},
+        {name:"LaunchX Entrepreneurship Program",field:"Entrepreneurship / Business",description:"Startup creation, business fundamentals, and innovation labs.",location:"Harvard / MIT / Online",website:"https://www.launchx.org",dates:"Summer 2026",cost:"$$$$",stipend:"No",quantTier:3,qualComp:"Competitive",deadlineRaw:"March"},
+        {name:"Wharton Global Youth Program",field:"Business / Finance",description:"Business fundamentals, marketing, and finance labs.",location:"Philadelphia, PA (In-Person)",website:"https://globalyouth.wharton.upenn.edu",dates:"Summer 2026",cost:"$$$$",stipend:"No",quantTier:3,qualComp:"Competitive",deadlineRaw:"Spring"},
+        {name:"UChicago Economics Summer Program",field:"Economics / Quantitative Social Science",description:"Intensive economics and data science coursework.",location:"Chicago, IL (In-Person)",website:"https://summer.uchicago.edu/high-school",dates:"Summer 2026",cost:"$$$",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"Goldman Sachs High School Programs",field:"Finance / Business",description:"Career exposure, networking, and industry skill development.",location:"Varies (In-Person)",website:"https://www.goldmansachs.com/careers/students/programs",dates:"Summer 2026",cost:"Free",stipend:"No",quantTier:4,qualComp:"Competitive",deadlineRaw:"Early Year"},
+        {name:"JPMorgan Chase Advancing Black Pathways",field:"Finance / Business",description:"Paid internship and mentorship program for high school students.",location:"Multiple Cities (In-Person)",website:"https://careers.jpmorgan.com/us/en/students/programs",dates:"Summer 2026",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"Early Year"},
+        {name:"Senate Page Program",field:"Government / Policy",description:"Work in the U.S. Senate providing legislative support and gaining civic experience.",location:"Washington, DC (In-Person)",website:"https://www.senate.gov/artandhistory/history/common/briefing/Page_Program.htm",dates:"Academic year sessions / special sessions",cost:"Free",stipend:"No",quantTier:5,qualComp:"Extremely Competitive",deadlineRaw:"Late Fall (varies)"},
+        {name:"Department of Justice (DOJ) High School Internships",field:"Law / Public Policy",description:"Legal research, administrative support, and exposure to federal justice operations.",location:"Washington, DC (In-Person)",website:"https://www.justice.gov/careers/students",dates:"Summer 2026",cost:"Free",stipend:"Sometimes",quantTier:3,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"Georgetown Summer Law Academy",field:"Pre-Law / Legal Studies",description:"Introductory law program with moot court, case analysis, and legal principles.",location:"Washington, DC (In-Person)",website:"https://summer.georgetown.edu/programs/law-academy",dates:"July 2026",cost:"$$$",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"NYU Tisch Summer High School Programs",field:"Film / Media / Performing Arts",description:"Film production, screenwriting, and performance labs taught by Tisch faculty.",location:"New York, NY (In-Person)",website:"https://tisch.nyu.edu/summer",dates:"Summer 2026",cost:"$$$$",stipend:"No",quantTier:3,qualComp:"Competitive",deadlineRaw:"Spring"},
+        {name:"CalArts Summer Animation / Design",field:"Animation / Visual Arts",description:"Intensive creative arts studio courses in animation and design.",location:"Valencia, CA (In-Person)",website:"https://calarts.edu/academics/pre-college",dates:"Summer 2026",cost:"$$$$",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"Adobe Digital Academy (Select Regions)",field:"Digital Media / UX / Creative Tech",description:"Tech and design workshops with industry mentorship from Adobe.",location:"Hybrid / Region-based (varies)",website:"https://www.adobe.com/careers/students.html",dates:"Summer 2026",cost:"Free",stipend:"Yes (varies)",quantTier:3,qualComp:"Moderate",deadlineRaw:"Varies"},
+        {name:"NPR Student Journalism Opportunities",field:"Journalism / Media Production",description:"Research and reporting projects with NPR teams.",location:"Washington, DC / Remote",website:"https://www.npr.org/about-npr/795219232/npr-internship",dates:"Summer 2026",cost:"Free",stipend:"Varies",quantTier:3,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"UN Youth Programs",field:"Global Affairs / Policy",description:"Workshops, leadership forums, and policy-focused youth projects.",location:"Virtual / UN Centers",website:"https://www.un.org/en/sections/youth",dates:"Summer 2026",cost:"Free / varies",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"Varies"},
+        {name:"World Merit Youth Summit",field:"Global Leadership / Social Innovation",description:"Leadership training, global collaboration, and social innovation projects.",location:"Virtual & rotating global host",website:"https://www.worldmerit.org",dates:"Summer 2026",cost:"Varies / scholarships available",stipend:"No",quantTier:3,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"NOAA Hollings Scholarship & HS Internships",field:"Marine Science / Environmental Science",description:"Research with NOAA scientists, conservation work, and field projects.",location:"Multiple NOAA Labs",website:"https://www.noaa.gov/office-education/hollings-scholarship",dates:"Summer 2026",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"January"},
+        {name:"EPA High School Research Programs",field:"Environmental Science",description:"Environmental research, lab work, and field projects with EPA teams.",location:"EPA Sites Nationwide",website:"https://www.epa.gov/careers",dates:"Summer 2026",cost:"Free",stipend:"Sometimes",quantTier:3,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"Yale Young Global Scholars (YYGS)",field:"Humanities / Social Sciences / Leadership",description:"Interdisciplinary coursework and seminars on global issues, leadership, and social sciences.",location:"Yale University, New Haven, CT (In-Person)",website:"https://globalscholars.yale.edu",dates:"Summer 2026",cost:"$$$$",stipend:"Limited aid",quantTier:4,qualComp:"Competitive",deadlineRaw:"January"},
+        {name:"Princeton University Summer Journalism Program (SJP)",field:"Journalism / Writing",description:"Intensive summer reporting, writing, and editorial projects.",location:"Princeton, NJ (In-Person)",website:"https://www.princeton.edu/special/sjsp",dates:"Summer 2026",cost:"Free",stipend:"Yes",quantTier:4,qualComp:"Competitive",deadlineRaw:"February"},
+        {name:"CyberPatriot National Youth Cyber Defense",field:"Cybersecurity",description:"Online cybersecurity competitions and summer camps focused on defense and system security.",location:"Virtual / Regional",website:"https://www.cyberpatriot.org",dates:"Summer 2026",cost:"$ (scholarships possible)",stipend:"No",quantTier:2,qualComp:"Moderate",deadlineRaw:"Spring"},
+        {name:"FIRST Robotics Summer Workshops",field:"Robotics / Engineering",description:"Hands-on robotics engineering workshops and team-based competitions.",location:"Local Clubs / National",website:"https://www.firstinspires.org",dates:"Summer 2026",cost:"Free / $",stipend:"No",quantTier:2,qualComp:"Moderate",deadlineRaw:"Varies"},
+        {name:"Global Youth Leadership Programs (Multiple Universities)",field:"Leadership / Diplomacy / Innovation",description:"Leadership labs, diplomacy workshops, and global policy coursework.",location:"Global (In-Person + Virtual)",website:"Various university programs (LSE, Oxford, etc.)",dates:"Summer 2026",cost:"$$$–$$$$",stipend:"Limited / Scholarships",quantTier:3,qualComp:"Moderate to Competitive",deadlineRaw:"Spring / Early"},
+        {name:"MIT Women in Computer Science / BWSI Extensions",field:"CS / Engineering",description:"AI, algorithms, and machine learning modules through MIT’s BWSI extensions.",location:"MIT, MA (In-Person)",website:"https://bwsi.mit.edu",dates:"Summer 2026",cost:"Free",stipend:"No",quantTier:4,qualComp:"Competitive",deadlineRaw:"Winter"},
+        {name:"University Pre-College Programs (Harvard / Stanford / UChicago, etc.)",field:"Various (Humanities, STEM, Business, Social Sciences)",description:"University-level courses and electives for high school students.",location:"University Campuses (In-Person)",website:"Harvard Summer School, Stanford Summer Session, UChicago Summer",dates:"Summer 2026",cost:"$$$$",stipend:"No",quantTier:3,qualComp:"Moderate–Competitive",deadlineRaw:"Spring / Early"},
+        {name:"Specialized Language & Humanities Immersion",field:"Languages / Culture",description:"Immersive language and cultural programs at institutes like Middlebury and Concordia.",location:"Various (In-Person)",website:"Middlebury Language Programs",dates:"Summer 2026",cost:"$$$–$$$$",stipend:"No",quantTier:2,qualComp:"Moderate",deadlineRaw:"Spring"}
+    ].map(p=>({...p,broadField:inferBroadField(p.field),deadline:normalizeDeadline(p.deadlineRaw)}));
+    function renderPrograms(list,containerId){
+        const container=document.getElementById(containerId);
+        if(!list.length){
+            container.innerHTML="<p style='color:#0f766e;'>No programs match those filters yet. Try relaxing one or two options.</p>";
             return;
         }
-        container.innerHTML = list.map(p => `
+        container.innerHTML=list.map(p=>`
             <div class="program-card">
                 <h3>${p.name}</h3>
+                <div class="program-field">📍 Field: ${p.field}</div>
+                <p class="program-description">${p.description}</p>
+                <p class="program-line"><span class="program-label">📍 Location:</span> ${p.location}</p>
+                <p class="program-line"><span class="program-label">📅 Dates:</span> ${p.dates}</p>
+                <p class="program-line"><span class="program-label">💰 Cost / Tuition:</span> ${p.cost}</p>
+                <p class="program-line"><span class="program-label">💵 Stipend:</span> ${p.stipend}</p>
+                <p class="program-line"><span class="program-label">📊 Quantitative Competitiveness:</span> Tier ${p.quantTier}</p>
+                <p class="program-line"><span class="program-label">🔥 Qualitative Competitiveness:</span> ${p.qualComp}</p>
+                <p class="program-line"><span class="program-label">📆 Apply‑By:</span> ${p.deadlineRaw}</p>
                 <div class="tag-row">
-                    <span class="tag">${p.field}</span>
-                    <span class="tag">${p.type}</span>
-                    <span class="tag">Cost: ${p.cost}</span>
-                    <span class="tag">${p.pay === "Paid" ? "Paid / stipend" : (p.pay === "Variable" ? "Pay varies" : "Unpaid")}</span>
-                    <span class="tag">Competitiveness: ${competitivenessToFlames(p.competitiveness)}</span>
-                    ${p.timeline ? `<span class="tag">Apps: ${p.timeline.replace("-", "–")}</span>` : ""}
+                    <span class="tag">${p.broadField}</span>
+                    ${p.deadline ? `<span class="tag">Deadline window: ${p.deadline}</span>` : ""}
                 </div>
-                <p class="program-meta">
-                    High-level: ${p.cost === "FREE" ? "No tuition" : "Tuition-based"} •
-                    ${p.pay === "Paid" ? "Includes pay/stipend" : "Primarily experience-focused"}
-                </p>
-                ${p.link ? `<a class="program-link" href="${p.link}" target="_blank">Program Info</a>` : ""}
+                ${p.website ? `<a class="program-link" href="${p.website}" target="_blank">Official Website</a>` : ""}
             </div>
         `).join("");
     }
-
-    function applyFilters() {
-        const field = document.getElementById("filter-field").value;
-        const cost = document.getElementById("filter-cost").value;
-        const pay = document.getElementById("filter-pay").value;
-        const comp = document.getElementById("filter-competitiveness").value;
-        const timeline = document.getElementById("filter-timeline").value;
-        const sort = document.getElementById("filter-sort").value;
-
-        let filtered = programs.filter(p => {
-            if (field && p.field !== field) return false;
-            if (cost && p.cost !== cost) return false;
-            if (pay && p.pay !== pay) return false;
-            if (comp && String(p.competitiveness) !== comp) return false;
-            if (timeline && p.timeline !== timeline) return false;
+    function applyFilters(){
+        const broadField=document.getElementById("filter-broad-field").value;
+        const cost=document.getElementById("filter-cost").value;
+        const stipend=document.getElementById("filter-stipend").value;
+        const tier=document.getElementById("filter-tier").value;
+        const deadline=document.getElementById("filter-deadline").value;
+        const sort=document.getElementById("filter-sort").value;
+        let filtered=programs.filter(p=>{
+            if(broadField&&p.broadField!==broadField)return false;
+            if(cost){
+                if(cost==="Free"&&!p.cost.toLowerCase().includes("free"))return false;
+                if(["$","$$","$$$","$$$$"].includes(cost)&&!p.cost.includes(cost))return false;
+            }
+            if(stipend){
+                const s=p.stipend.toLowerCase();
+                if(stipend==="Yes"&&!s.includes("yes"))return false;
+                if(stipend==="No"&&s.includes("yes"))return false;
+                if(stipend==="Sometimes"&&!(s.includes("sometimes")||s.includes("varies")))return false;
+            }
+            if(tier&&String(p.quantTier)!==tier)return false;
+            if(deadline&&p.deadline!==deadline)return false;
             return true;
         });
-
-        if (sort === "cost-asc") {
-            filtered.sort((a, b) => costRank[a.cost] - costRank[b.cost]);
-        } else if (sort === "cost-desc") {
-            filtered.sort((a, b) => costRank[b.cost] - costRank[a.cost]);
-        } else if (sort === "comp-asc") {
-            filtered.sort((a, b) => a.competitiveness - b.competitiveness);
-        } else if (sort === "comp-desc") {
-            filtered.sort((a, b) => b.competitiveness - a.competitiveness);
-        } else if (sort === "name-asc") {
-            filtered.sort((a, b) => a.name.localeCompare(b.name));
-        }
-
-        renderPrograms(filtered, "explorer-results");
+        if(sort==="tier-asc")filtered.sort((a,b)=>a.quantTier-b.quantTier);
+        else if(sort==="tier-desc")filtered.sort((a,b)=>b.quantTier-a.quantTier);
+        else if(sort==="cost-asc")filtered.sort((a,b)=>costRank(a.cost)-costRank(b.cost));
+        else if(sort==="cost-desc")filtered.sort((a,b)=>costRank(b.cost)-costRank(a.cost));
+        else if(sort==="name-asc")filtered.sort((a,b)=>a.name.localeCompare(b.name));
+        renderPrograms(filtered,"explorer-results");
     }
-
-    function resetFilters() {
-        document.getElementById("filter-field").value = "";
-        document.getElementById("filter-cost").value = "";
-        document.getElementById("filter-pay").value = "";
-        document.getElementById("filter-competitiveness").value = "";
-        document.getElementById("filter-timeline").value = "";
-        document.getElementById("filter-sort").value = "";
-        renderPrograms(programs, "explorer-results");
+    function resetFilters(){
+        document.getElementById("filter-broad-field").value="";
+        document.getElementById("filter-cost").value="";
+        document.getElementById("filter-stipend").value="";
+        document.getElementById("filter-tier").value="";
+        document.getElementById("filter-deadline").value="";
+        document.getElementById("filter-sort").value="";
+        renderPrograms(programs,"explorer-results");
     }
-
-    function runQuiz() {
-        const field = document.getElementById("quiz-field").value;
-        const costPref = document.getElementById("quiz-cost").value;
-        const payPref = document.getElementById("quiz-pay").value;
-        const compPref = document.getElementById("quiz-competitiveness").value;
-        const timelinePref = document.getElementById("quiz-timeline").value;
-
-        let scored = programs.map(p => {
-            let score = 0;
-
-            if (!field || p.field === field) score += 3;
-            if (costPref === "FREE" && p.cost === "FREE") score += 3;
-            if (costPref === "LOW" && (p.cost === "FREE" || p.cost === "$$")) score += 2;
-            if (costPref === "ANY") score += 1;
-
-            if (payPref && p.pay === payPref) score += 2;
-            if (!payPref) score += 1;
-
-            if (compPref === "LOW" && p.competitiveness <= 2) score += 2;
-            if (compPref === "MEDIUM" && (p.competitiveness === 2 || p.competitiveness === 3)) score += 2;
-            if (compPref === "HIGH" && p.competitiveness >= 3) score += 2;
-            if (!compPref) score += 1;
-
-            if (!timelinePref || p.timeline === timelinePref) score += 1;
-
-            return { ...p, score };
+    function runQuiz(){
+        const broadField=document.getElementById("quiz-broad-field").value;
+        const costPref=document.getElementById("quiz-cost").value;
+        const stipendPref=document.getElementById("quiz-stipend").value;
+        const tierPref=document.getElementById("quiz-tier").value;
+        const deadlinePref=document.getElementById("quiz-deadline").value;
+        let scored=programs.map(p=>{
+            let score=0;
+            if(!broadField||p.broadField===broadField)score+=3;
+            if(costPref==="FreeOnly"&&p.cost.toLowerCase().includes("free"))score+=3;
+            if(costPref==="Low"&&(p.cost.toLowerCase().includes("free")||p.cost.includes("$ ")||p.cost.includes("$ (")))score+=2;
+            if(costPref==="Open")score+=1;
+            if(stipendPref==="Yes"&&p.stipend.toLowerCase().includes("yes"))score+=3;
+            if(stipendPref==="No"&&!p.stipend.toLowerCase().includes("yes"))score+=2;
+            if(!stipendPref)score+=1;
+            if(tierPref==="Lower"&&p.quantTier<=2)score+=2;
+            if(tierPref==="Medium"&&(p.quantTier===2||p.quantTier===3))score+=2;
+            if(tierPref==="High"&&p.quantTier>=4)score+=2;
+            if(!tierPref)score+=1;
+            if(!deadlinePref||p.deadline===deadlinePref)score+=1;
+            return {...p,score};
         });
-
-        scored.sort((a, b) => b.score - a.score || b.competitiveness - a.competitiveness);
-
-        const best = scored.slice(0, 3);
-        const stretch = scored.filter(p => p.competitiveness >= 3).slice(3, 6);
-        const safer = scored.filter(p => p.competitiveness <= 2).slice(0, 3);
-
-        const container = document.getElementById("quiz-results");
-        container.innerHTML = `
+        scored.sort((a,b)=>b.score-a.score||b.quantTier-a.quantTier);
+        const best=scored.slice(0,3);
+        const stretch=scored.filter(p=>p.quantTier>=4).slice(0,3);
+        const safer=scored.filter(p=>p.quantTier<=2).slice(0,3);
+        const container=document.getElementById("quiz-results");
+        container.innerHTML=`
             <div>
                 <div class="pill-heading">Best-fit picks for you</div>
                 <div class="results-grid">
-                    ${best.map(p => quizCard(p)).join("")}
+                    ${best.map(p=>quizCard(p)).join("")}
                 </div>
             </div>
             <div>
                 <div class="pill-heading">Stretch programs (high signal)</div>
                 <div class="results-grid">
-                    ${stretch.length ? stretch.map(p => quizCard(p)).join("") : "<p class='small-note'>No clear stretch programs based on your answers—try increasing competitiveness.</p>"}
+                    ${stretch.length?stretch.map(p=>quizCard(p)).join(""):"<p class='small-note'>No clear stretch programs based on your answers—try increasing competitiveness.</p>"}
                 </div>
             </div>
             <div>
-                <div class="pill-heading">Safer / accessible options</div>
+                <div class="pill-heading">Safer / more accessible options</div>
                 <div class="results-grid">
-                    ${safer.length ? safer.map(p => quizCard(p)).join("") : "<p class='small-note'>No obvious safer options—try lowering competitiveness or widening fields.</p>"}
+                    ${safer.length?safer.map(p=>quizCard(p)).join(""):"<p class='small-note'>No obvious safer options—try lowering competitiveness or widening areas.</p>"}
                 </div>
             </div>
         `;
     }
-
-    function quizCard(p) {
+    function quizCard(p){
         return `
             <div class="program-card">
                 <h3>${p.name}</h3>
-                <div class="tag-row">
-                    <span class="tag">${p.field}</span>
-                    <span class="tag">${p.type}</span>
-                    <span class="tag">Cost: ${p.cost}</span>
-                    <span class="tag">${p.pay === "Paid" ? "Paid / stipend" : (p.pay === "Variable" ? "Pay varies" : "Unpaid")}</span>
-                    <span class="tag">Competitiveness: ${competitivenessToFlames(p.competitiveness)}</span>
-                </div>
-                <p class="program-meta">
-                    Score-weighted match based on your interests, budget, and competitiveness preferences.
-                </p>
-                ${p.link ? `<a class="program-link" href="${p.link}" target="_blank">Program Info</a>` : ""}
+                <div class="program-field">📍 Field: ${p.field}</div>
+                <p class="program-description">${p.description}</p>
+                <p class="program-line"><span class="program-label">📅 Dates:</span> ${p.dates}</p>
+                <p class="program-line"><span class="program-label">💰 Cost:</span> ${p.cost}</p>
+                <p class="program-line"><span class="program-label">💵 Stipend:</span> ${p.stipend}</p>
+                <p class="program-line"><span class="program-label">📊 Tier:</span> ${p.quantTier}</p>
+                <p class="program-line"><span class="program-label">🔥 Competitiveness:</span> ${p.qualComp}</p>
+                ${p.website?`<a class="program-link" href="${p.website}" target="_blank">Official Website</a>`:""}
             </div>
         `;
     }
-
-    // initial render
-    renderPrograms(programs, "explorer-results");
+    renderPrograms(programs,"explorer-results");
 </script>
 </body>
 </html>
-
