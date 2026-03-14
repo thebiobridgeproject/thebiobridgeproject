@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The BioBridge Project – Contact Us</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #f8fafc; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    header {
+      background: linear-gradient(135deg, #7dd3fc, #a7f3d0);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+    }
+
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: #fff; font-weight: 600; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links .active {
+      color: #0f766e; border-bottom: 2px solid #0f766e;
+    }
+
+    .contact-header {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #7dd3fc, #a7f3d0);
+      color: #fff;
+    }
+
+    .contact-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section {
+      max-width: 900px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-section h2 {
+      color: #0891b2;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .contact-section p {
+      color: #0f766e;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    input, textarea {
+      padding: 1rem;
+      border: 2px solid #a7f3d0;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    textarea { height: 150px; resize: vertical; }
+
+    button {
+      background: #0891b2;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover { background: #0f766e; }
+
+    .socials {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      font-size: 2rem;
+      color: #0891b2;
+      transition: color 0.2s;
+    }
+
+    .socials a:hover {
+      color: #0f766e;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #0891b2, #0f766e);
+      color: #fff; padding: 2.5rem 0; margin-top: 4rem;
+    }
+
+    .footer-links {
+      display: flex; justify-content: center; gap: 2.2rem; margin-bottom: 1rem;
+    }
+
+    .footer-links a { color: #fff; font-weight: 500; }
+    .footer-links a:hover { color: #7dd3fc; }
+
+    footer p { text-align: center; font-size: 1rem; }
+
+    @media (max-width: 700px) {
+      .footer-links { flex-direction: column; gap: 0.7rem; }
+      header nav { flex-direction: column; gap: 0.7rem; }
+    }
+  </style>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="launchpadadvisor">LaunchPad Advisor</a></li>
+        <li><a href="resource-hub.html">Resource Hub</a></li>
+        <li><a href="careerpathexplorer.html">Aptitude Test & Career Path Explorer</a></li>
+        <li><a href="cds.html">T20 Common Data Sets Hub</a></li>
+        <li><a href="essay-analyzer.html">Essay Analyzer</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="focch.html">Free Online College Courses</a></li>
+        <li><a href="contactus.html" class="active">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="contact-header">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you! Whether you have questions, ideas, or want to collaborate — reach out anytime.</p>
+  </section>
+
+  <section class="contact-section">
+    <h2>Send Us a Message</h2>
+    <p>Fill out the form below and we’ll get back to you as soon as possible.</p>
+
+    <form action="https://formspree.io/f/meerzyge" method="POST">
+      <input type="hidden" name="_redirect" value="success.html">
+
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="socials">
+      <a href="https://instagram.com/thebiobridge_project" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:thebiobridgeproject@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="launchpadadvisor">LaunchPad Advisor</a>
+        <a href="resource-hub.html">Resource Hub</a>
+        <a href="careerpathexplorer.html">Aptitude Test & Career Path Explorer</a>
+        <a href="cds.html">T20 Common Data Sets Hub</a>
+        <a href="essay-analyzer.html">Essay Analyzer</a>
+        <a href="research.html">Research</a>
+        <a href="focch.html">Free Online College Courses</a>
+        <a href="contactus.html">Contact Us</a>
+      </div>
+      <p>© 2025 The BioBridge Project by Dhiqrah Essa</p>
+    </div>
+  </footer>
+
+</body>
+</html>
 
